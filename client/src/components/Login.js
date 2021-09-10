@@ -40,9 +40,9 @@ function Login({onLogin}) {
         body: JSON.stringify({ username, password }),
       }).then((r) => {
         if (r.ok) {
-          r.json().then(console.log);
+          r.json().then((user) => onLogin(user));
         }
-        history.push('/')
+        history.push('/dashboard')
       }
       );
     }
