@@ -11,7 +11,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null)
 
   function onLogin(user) {
-    setCurrentUser(user)
+    setCurrentUser(user.id)
   }
 
   return (
@@ -27,7 +27,7 @@ function App() {
                <Route
                 path='/login'
                 component={() =>
-                  <Login setCurrentUser={setCurrentUser} />}
+                  <Login onLogin={onLogin} />}
               />
               <Route
                 path='/'

@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
-function Login({setCurrentUser}) {
+function Login({onLogin}) {
     const classes = useStyles();
     const [username, setUsername] = useState(null)
     const [password, setPassword] = useState(null)
@@ -40,7 +40,7 @@ function Login({setCurrentUser}) {
         body: JSON.stringify({ username, password }),
       }).then((r) => {
         if (r.ok) {
-          r.json().then((user) => setCurrentUser(user));
+          r.json().then(console.log);
         }
         history.push('/')
       }
