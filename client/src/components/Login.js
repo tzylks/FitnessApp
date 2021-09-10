@@ -2,7 +2,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core';
 import {useState} from 'react'
-import {useHistory} from 'react-router-dom'
+import {useHistory, NavLink} from 'react-router-dom'
 
 
 const useStyles = makeStyles(theme => ({
@@ -66,7 +66,7 @@ function Login({onLogin}) {
         onChange={e => setPassword(e.target.value)}
       />
       <div>
-        <Button variant="contained">
+        <Button component={NavLink} to="/signup" variant="contained">
           Signup
         </Button>
         <Button type="submit" variant="contained" color="primary">

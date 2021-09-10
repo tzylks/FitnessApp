@@ -47,7 +47,7 @@ function SignUp({onLogin}) {
       })
       .then(res => res.json())
       .then(onLogin)
-      history.push("/")
+      history.push("/dashboard")
     }
 
     return (
