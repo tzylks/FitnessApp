@@ -1,5 +1,5 @@
 import './App.css';
-import SignIn from './components/SignUp.js'
+import SignUp from './components/SignUp.js'
 import NavBar from './components/NavBar.js'
 import {useState, useEffect} from 'react'
 import Login from './components/Login.js'
@@ -23,7 +23,7 @@ function App() {
     });
   }, []);
 
-  if (!currentUser) return <Login onLogin={onLogin} />;
+  // if (!currentUser) return <Dashboard/>
 
   return (
     <>
@@ -33,7 +33,7 @@ function App() {
               <Route
                 path='/signup'
                 component={() =>
-                  <SignIn onLogin={onLogin}/>}
+                  <SignUp onLogin={onLogin}/>}
               />
                <Route
                 path='/login'
