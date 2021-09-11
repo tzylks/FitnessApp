@@ -1,0 +1,77 @@
+import { makeStyles } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import Button from '@material-ui/core/Button';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
+import { OpenWithTwoTone } from '@material-ui/icons';
+import { useState } from 'react'
+import { NavLink } from 'react-router-dom';
+import MenuOpenIcon from '@material-ui/icons/MenuOpen';
+
+const useStyles = makeStyles({
+  root: {
+    width: 500,
+    background: 'blue'
+  },
+  list: {
+    width: 250,
+   
+  },
+  fullList: {
+    width: 'auto',
+    
+  },
+  paper: {
+    background: '#FEC260',
+  },
+  icons: {
+    paddingLeft: '20px',
+    paddingTop: '20px',
+    fontSize: '50px'
+  }
+
+  
+});
+
+function TempDrawer() {
+  const classes = useStyles();
+  const [state, setState] = useState(false);
+
+  function toggleDrawer() {
+    setState(!state);
+  };
+
+  let CustomListItem = ({ to, primary }) => (
+    <ListItem
+      button
+      component={NavLink}
+      to={to}
+    >
+      <ListItemText primary={primary} />
+    </ListItem>
+  )
+
+  return (
+    <div>
+      <MenuOpenIcon onClick={toggleDrawer} className={classes.icons} style={{color: '#FEC260'}}/>
+      <Drawer variant="persistent" anchor='left' open={state} classes={{ paper: classes.paper }} >
+        <List className={classes.list}>
+          <MenuOpenIcon onClick={toggleDrawer} className={classes.icons} />
+          <CustomListItem to="/login" primary="Login" color="secondary" />
+          <Divider />
+          <CustomListItem to="/signup" primary="Signup" />
+          <Divider />
+          <CustomListItem to="/exercises" primary="Exercises" />
+          <Divider />
+        </List>
+      </Drawer>
+    </div>
+  )
+}
+
+export default TempDrawer;
