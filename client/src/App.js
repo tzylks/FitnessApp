@@ -12,11 +12,13 @@ import Exercises from './components/Exercises.js'
 import Pricing from './components/Pricing.js'
 import Footer from './components/Footer.js'
 import UserDashboard from './components/UserDashboard'
+import Checkout from './components/Checkout.js'
 
 
 function App() {
 
   const [currentUser, setCurrentUser] = useState(null)
+  const [favoriteExercises, setFavoriteExercises] = useState([])
   const [exercises, setExercises] = useState([])
 
   function onLogin(user) {
@@ -29,6 +31,7 @@ function App() {
     .then(setExercises)
   }, [])
 
+
   useEffect(() => {
     // auto-login
     fetch("/me").then((r) => {
@@ -37,6 +40,29 @@ function App() {
       }
     });
   }, []);
+
+  function onFavoriteClick(exercise, currentUser) {
+
+    const newObj = {
+        exercise_id: exercise.id,
+        user_id: currentUser.id,
+        activity: exercise.activity,
+        muscle_group: exercise.muscle_group
+    }
+
+    console.log(exercise.id)
+    console.log(currentUser.id)
+
+    fetch('/user_exercises', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newObj)
+    })
+    .then(res => res.json())
+    .then(setFavoriteExercises)
+}
 
   // if (!currentUser) return <Dashboard/>
 
@@ -65,7 +91,7 @@ function App() {
            <Route
             path='/exercises'
             component={() =>
-              <Exercises exercises={exercises} />}
+              <Exercises exercises={exercises} currentUser={currentUser} onFavoriteClick={onFavoriteClick} favoriteExercises={favoriteExercises} />}
           />
             <Route
             path='/pricing'
@@ -76,6 +102,11 @@ function App() {
             path='/userdashboard'
             component={() =>
               <UserDashboard currentUser={currentUser}/>}
+          />
+           <Route
+            path='/checkout'
+            component={() =>
+              <Checkout />}
           />
 
         </Switch>

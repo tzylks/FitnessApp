@@ -1,11 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-
+import Tooltip from '@material-ui/core/Tooltip';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-
+import { CardActions } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles({
     root: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
     },
 });
 
-function Exercise({exercise}){
+function Exercise({exercise, onFavoriteClick, currentUser, favoriteExercises}){
 
     const classes = useStyles();
 
@@ -50,18 +51,13 @@ function Exercise({exercise}){
                         </Typography>
                     </CardContent>
                 </CardActionArea>
-                {/* <CardActions>
-                <Tooltip title="Add this item to favorites" arrow style={{color: "black"}}>
-                    <Button onClick={() => onFavoriteClick(album.id)} size="small" style={{ backgroundColor: '#b9f6ca' }}>
-                        Favorite
+                <CardActions>
+                <Tooltip title="Add this item to Exercise Plan" arrow style={{color: "black"}}>
+                    <Button onClick={() => onFavoriteClick(exercise, currentUser)} size="small" style={{ backgroundColor: '#FEC260' }}>
+                        Add to Exercise Plan
                     </Button>
                 </Tooltip>
-                <Tooltip title="Permanently remove album" arrow style={{color: "black"}}>
-                    <Button onClick={() => onDelete(album.id)} size="small" style={{ backgroundColor: '#b9f6ca' }}>
-                        Delete
-                    </Button>
-                </Tooltip>
-                </CardActions> */}
+                </CardActions>
             </Card>
     )
 }
