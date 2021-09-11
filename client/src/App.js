@@ -9,6 +9,9 @@ import TempDrawer from './components/TempDrawer'
 import { ThemeProvider } from "@material-ui/core"
 import Theme from "./components/Theme.js"
 import Exercises from './components/Exercises.js'
+import Pricing from './components/Pricing.js'
+import Footer from './components/Footer.js'
+import UserDashboard from './components/UserDashboard'
 
 
 function App() {
@@ -64,8 +67,19 @@ function App() {
             component={() =>
               <Exercises exercises={exercises} />}
           />
+            <Route
+            path='/pricing'
+            component={() =>
+              <Pricing />}
+          />
+            <Route
+            path='/userdashboard'
+            component={() =>
+              <UserDashboard currentUser={currentUser}/>}
+          />
 
         </Switch>
+        <Footer />
       </ThemeProvider>
       </div>
     </>

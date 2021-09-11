@@ -51,6 +51,7 @@ function SignUp({onLogin}) {
     }
 
     return (
+      <div style={{backgroundColor: "#D62AD0", width: "25vw", margin:"auto", marginBottom: '25vh'}}>
         <form className={classes.root} onSubmit={onSubmitSignUp}>
         <TextField
         label="Username"
@@ -77,6 +78,7 @@ function SignUp({onLogin}) {
         </Button>
       </div>
         </form>
+    </div>
     )
 }
 

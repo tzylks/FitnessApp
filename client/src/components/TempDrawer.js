@@ -12,11 +12,12 @@ import { OpenWithTwoTone } from '@material-ui/icons';
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import MenuOpenIcon from '@material-ui/icons/MenuOpen';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 const useStyles = makeStyles({
   root: {
     width: 500,
-    background: 'blue'
+    
   },
   list: {
     width: 250,
@@ -28,6 +29,7 @@ const useStyles = makeStyles({
   },
   paper: {
     background: '#FEC260',
+    flexShrink: 0,
   },
   icons: {
     paddingLeft: '20px',
@@ -47,13 +49,16 @@ function TempDrawer() {
   };
 
   let CustomListItem = ({ to, primary }) => (
-    <ListItem
-      button
-      component={NavLink}
-      to={to}
-    >
-      <ListItemText primary={primary} />
-    </ListItem>
+    
+      <ListItem
+        button
+        component={NavLink}
+        to={to}
+      >
+        <ListItemText primary={primary} />
+      </ListItem>
+    
+
   )
 
   return (
@@ -62,11 +67,16 @@ function TempDrawer() {
       <Drawer variant="persistent" anchor='left' open={state} classes={{ paper: classes.paper }} >
         <List className={classes.list}>
           <MenuOpenIcon onClick={toggleDrawer} className={classes.icons} />
+          
           <CustomListItem to="/login" primary="Login" color="secondary" />
           <Divider />
           <CustomListItem to="/signup" primary="Signup" />
           <Divider />
           <CustomListItem to="/exercises" primary="Exercises" />
+          <Divider />
+          <CustomListItem to="/pricing" primary="Pricing" />
+          <Divider />
+          <CustomListItem to="/userdashboard" primary="User Dashboard" />
           <Divider />
         </List>
       </Drawer>

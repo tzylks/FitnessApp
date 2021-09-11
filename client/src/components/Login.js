@@ -1,5 +1,6 @@
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Box from '@material-ui/core/Box'
 import { makeStyles } from '@material-ui/core';
 import {useState} from 'react'
 import {useHistory, NavLink} from 'react-router-dom'
@@ -12,7 +13,6 @@ const useStyles = makeStyles(theme => ({
       justifyContent: 'center',
       alignItems: 'center',
       padding: theme.spacing(2),
-      marginTop: '25vh',
   
       '& .MuiTextField-root': {
         margin: theme.spacing(1),
@@ -48,25 +48,32 @@ function Login({onLogin}) {
     }
 
     return (
+      <>
+      
+      <div style={{backgroundColor: "#D62AD0", width: "25vw", margin:"auto", marginBottom: '25vh'}}>
+      <Box style={{backgroundColor: "#FEC260", width: "25vw", margin:"auto", textAlign:"center", height: "50px"}}>Login</Box>
         <form className={classes.root} onSubmit={handleSubmit}>
         <TextField
         label="Username"
-        variant="filled"
+        variant="outlined"
         required
         value={username}
         onChange={e => setUsername(e.target.value)}
+        color="primary"
+        
       />
       
       <TextField
         label="Password"
-        variant="filled"
+        variant="outlined"
         type="password"
         required
         value={password}
         onChange={e => setPassword(e.target.value)}
+        color="primary"
       />
       <div>
-        <Button component={NavLink} to="/signup" variant="contained">
+        <Button component={NavLink} to="/signup" variant="contained" color="primary">
           Signup
         </Button>
         <Button type="submit" variant="contained" color="primary">
@@ -74,6 +81,8 @@ function Login({onLogin}) {
         </Button>
       </div>
         </form>
+    </div>
+  </>
     )
 }
 
