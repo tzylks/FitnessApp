@@ -40,13 +40,14 @@ const useStyles = makeStyles({
   
 });
 
-function TempDrawer() {
+function TempDrawer({onLogout}) {
   const classes = useStyles();
   const [state, setState] = useState(false);
 
   function toggleDrawer() {
     setState(!state);
   };
+
 
   let CustomListItem = ({ to, primary }) => (
     
@@ -60,6 +61,13 @@ function TempDrawer() {
     
 
   )
+
+  function onHandleLogout(){
+    fetch('/logout', {
+      method: 'DELETE',
+    })
+    .then(() => onLogout())
+    }
 
   return (
     <div>
@@ -78,7 +86,11 @@ function TempDrawer() {
           <Divider />
           <CustomListItem to="/userdashboard" primary="User Dashboard" />
           <Divider />
+          <Divider />
+         
+
         </List>
+        <Button component={NavLink} to='/login' onClick={onHandleLogout}>Hello</Button>
       </Drawer>
     </div>
   )

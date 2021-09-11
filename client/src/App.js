@@ -15,12 +15,19 @@ import UserDashboard from './components/UserDashboard'
 import Checkout from './components/Checkout.js'
 
 
+
 function App() {
 
-  const [currentUser, setCurrentUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState(false)
   const [favoriteExercises, setFavoriteExercises] = useState([])
   const [exercises, setExercises] = useState([])
-
+  const [favorites, setFavorites] = useState([])
+  
+  
+  function onLogout(){
+    setCurrentUser(false)
+  }
+  
   function onLogin(user) {
     setCurrentUser(user)
   }
@@ -31,6 +38,13 @@ function App() {
     .then(setExercises)
   }, [])
 
+  let id = currentUser.id
+
+  useEffect(() => {
+    fetch(`/users/${id}`)
+    .then(res => res.json())
+    .then(data => setFavorites(data.user_exercises))
+}, [currentUser])
 
   useEffect(() => {
     // auto-login
@@ -61,22 +75,23 @@ function App() {
         body: JSON.stringify(newObj)
     })
     .then(res => res.json())
-    .then(setFavoriteExercises)
+    .then(data => setFavoriteExercises([...favoriteExercises, data]))
 }
 
-  // if (!currentUser) return <Dashboard/>
+  
 
   return (
     <>
-    <div style={{backgroundColor: 'black', height: '100vh'}}>
+   
+    <div style={{backgroundColor: 'black', height: '110vh'}}>
       <ThemeProvider theme={Theme}>
-        <TempDrawer />
+        <TempDrawer onLogout={onLogout} />
         {/* <NavBar /> */}
         <Switch>
           <Route
             path='/signup'
             component={() =>
-              <SignUp onLogin={onLogin} />}
+              <SignUp onLogin={onLogin} setCurrentUser={setCurrentUser} />}
           />
           <Route
             path='/login'
@@ -91,7 +106,7 @@ function App() {
            <Route
             path='/exercises'
             component={() =>
-              <Exercises exercises={exercises} currentUser={currentUser} onFavoriteClick={onFavoriteClick} favoriteExercises={favoriteExercises} />}
+              <Exercises exercises={exercises} currentUser={currentUser} onFavoriteClick={onFavoriteClick} />}
           />
             <Route
             path='/pricing'
@@ -101,7 +116,7 @@ function App() {
             <Route
             path='/userdashboard'
             component={() =>
-              <UserDashboard currentUser={currentUser}/>}
+              <UserDashboard currentUser={currentUser} favorites={favorites} setCurrentUser={setCurrentUser} />}
           />
            <Route
             path='/checkout'

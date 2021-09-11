@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     },
 });
 
-function Exercise({exercise, onFavoriteClick, currentUser}){
+function FavoriteExercises({currentUser, favorites}){
 
     const classes = useStyles();
 
@@ -38,10 +38,10 @@ function Exercise({exercise, onFavoriteClick, currentUser}){
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h4" component="h2" color="secondary">
-                            {exercise.activity}
+                            {favorites.activity}
                         </Typography>
                         <Typography gutterBottom variant="h5" component="h2">
-                            {exercise.muscle_group}
+                            {favorites.muscle_group}
                         </Typography>
                         <Typography variant="body2"  component="p">
                             Hell yeah
@@ -53,7 +53,7 @@ function Exercise({exercise, onFavoriteClick, currentUser}){
                 </CardActionArea>
                 <CardActions>
                 <Tooltip title="Add this item to Exercise Plan" arrow style={{color: "black"}}>
-                    <Button onClick={() => onFavoriteClick(exercise, currentUser)} size="small" style={{ backgroundColor: '#FEC260' }}>
+                    <Button size="small" style={{ backgroundColor: '#FEC260' }}>
                         Add to Exercise Plan
                     </Button>
                 </Tooltip>
@@ -62,4 +62,4 @@ function Exercise({exercise, onFavoriteClick, currentUser}){
     )
 }
 
-export default Exercise
+export default FavoriteExercises

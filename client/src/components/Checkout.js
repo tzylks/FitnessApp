@@ -58,7 +58,7 @@ export default function Checkout() {
       
 
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-        <Paper style={{backgroundColor: '#FEC260', width: '50vw', marginRight: "100px"}} variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+        <Paper style={{backgroundColor: '#FEC260', width: '40vw', marginBottom: '6vh'}} variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
           <Typography component="h1" variant="h4" align="center">
             Checkout
           </Typography>
