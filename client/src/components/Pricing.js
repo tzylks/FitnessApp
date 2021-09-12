@@ -131,7 +131,7 @@ export default function Pricing() {
           {tiers.map((tier) => (
             // Enterprise card is full width at sm breakpoint
             <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
-              <Card style={{marginBottom: '100px'}}>
+              <Card style={{marginBottom: '100px', boxShadow: "0 19px 50px  rgba(120, 222, 199, .5)"}}>
                 <CardHeader
                   title={tier.title}
                   subheader={tier.subheader}
