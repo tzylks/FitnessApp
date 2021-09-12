@@ -13,7 +13,6 @@ const useStyles = makeStyles(theme => ({
       justifyContent: 'center',
       alignItems: 'center',
       padding: theme.spacing(2),
-      marginTop: '25vh',
   
       '& .MuiTextField-root': {
         margin: theme.spacing(1),
