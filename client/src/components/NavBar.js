@@ -11,6 +11,9 @@ import LoyaltySharpIcon from '@material-ui/icons/LoyaltySharp';
 import LibraryMusicSharpIcon from '@material-ui/icons/LibraryMusicSharp';
 import {IconButton} from '@material-ui/core'
 
+import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
+import {useState} from 'react'
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -56,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function NavBar({ search, setSearch }) {
+function NavBar({ search, setSearch, state, toggleDrawer }) {
 
   const classes = useStyles();
 
@@ -65,14 +68,14 @@ function NavBar({ search, setSearch }) {
   }
 
   return (
-    <div style={{cursor: "url('https://img.icons8.com/plasticine/100/000000/cursor.png') 39 39, auto;"}}>
-    <AppBar position="sticky">
+    <div style={{cursor: "url('https://img.icons8.com/plasticine/100/000000/cursor.png') 39 39, auto;", width: "83vw", float: "right"}}>
+    <AppBar position="fixed" style={{background: "rgba(255, 76, 41, .0)"}}>
       <Toolbar>
-        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-          <BlurOnIcon />
+        <IconButton edge="start" color="inherit" onClick={toggleDrawer} className={classes.menuButton} style={{color: '#FEC260'}} aria-label="menu">
+        <FitnessCenterIcon edge="start" color="primary" onClick={toggleDrawer} className={classes.menuButton} style={{color: '#FEC260'}} aria-label="menu"/>
         </IconButton>
-        <Typography component={NavLink} to="/" variant="h6" style={{color: "white"}} className={classes.title} style={{textDecoration: 'none', color: "white"}}>
-          Slowly We Rot
+        <Typography  variant="h3" className={classes.title} style={{textDecoration: 'none', background: 'linear-gradient(160deg, #D62AD0 10%, #78DEC7 24% )', webkitBackgroundClip: 'text', webkitTextFillColor: "transparent", padding: '0', flexGrow: '1'}}>
+          TAO OF PUMP
         </Typography>
         <div className={classes.search}>
           <div className={classes.searchIcon}>
@@ -88,7 +91,7 @@ function NavBar({ search, setSearch }) {
           <AlbumIcon style={{paddingRight: "15px", color: "white"}} />
         </NavLink>
         <NavLink to='/favorites'>
-          <LoyaltySharpIcon color="secondary" style={{paddingRight: "15px", color: "white"}}/>
+          <LoyaltySharpIcon color="secondary" style={{paddingRight: "15px", color: "white", }}/>
         </NavLink>
         <NavLink to="/addalbum">
           <LibraryMusicSharpIcon color="secondary" style={{paddingRight: "15px", color: "white"}}/>

@@ -40,13 +40,13 @@ const useStyles = makeStyles({
   
 });
 
-function TempDrawer({onLogout}) {
+function TempDrawer({onLogout, state, toggleDrawer}) {
   const classes = useStyles();
-  const [state, setState] = useState(false);
+  // const [state, setState] = useState(false);
 
-  function toggleDrawer() {
-    setState(!state);
-  };
+  // function toggleDrawer() {
+  //   setState(!state);
+  // };
 
 
   let CustomListItem = ({ to, primary }) => (
@@ -71,7 +71,7 @@ function TempDrawer({onLogout}) {
 
   return (
     <div>
-      <MenuOpenIcon onClick={toggleDrawer} className={classes.icons} style={{color: '#FEC260'}}/>
+      {/* <MenuOpenIcon onClick={toggleDrawer} className={classes.icons} style={{color: '#FEC260'}}/> */}
       <Drawer variant="persistent" anchor='left' open={state} classes={{ paper: classes.paper }} >
         <List className={classes.list}>
           <MenuOpenIcon onClick={toggleDrawer} className={classes.icons} />
@@ -90,7 +90,7 @@ function TempDrawer({onLogout}) {
          
 
         </List>
-        <Button component={NavLink} to='/login' onClick={onHandleLogout}>Hello</Button>
+        <Button component={NavLink} to='/login' onClick={onHandleLogout} style={{justifyContent: 'left', }}>Logout</Button>
       </Drawer>
     </div>
   )

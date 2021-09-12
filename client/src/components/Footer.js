@@ -35,9 +35,9 @@ import Box from '@material-ui/core/Box';
 
 function Footer() {
     const classes = useStyles();
-    
+ 
     return(
-    <div style={{background: 'linear-gradient(45deg, #FEC260 25%, #78DEC7 25%)', border: `5px solid #000`}}>
+    <div style={{background: 'linear-gradient(329deg, #D62AD0 25%, #78DEC7 24% )', borderTop: `5px solid #FEC260`}}>
       <Container maxWidth="sm" component="footer" className={classes.footer} >
         <Grid container spacing={6} justifyContent="space-evenly">
           {footers.map((footer) => (

@@ -44,8 +44,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '4vh'
   },
   cardHeader: {
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
+    backgroundColor: "#D62AD0"
   },
   cardPricing: {
     display: 'flex',

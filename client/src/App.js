@@ -22,6 +22,7 @@ function App() {
   const [favoriteExercises, setFavoriteExercises] = useState([])
   const [exercises, setExercises] = useState([])
   const [favorites, setFavorites] = useState([])
+  const [state, setState] = useState(false);
   
   
   function onLogout(){
@@ -78,6 +79,9 @@ function App() {
     .then(data => setFavoriteExercises([...favoriteExercises, data]))
 }
 
+function toggleDrawer() {
+  setState(!state);
+};
   
 
   return (
@@ -85,8 +89,8 @@ function App() {
    
     <div style={{backgroundColor: 'black', height: '110vh'}}>
       <ThemeProvider theme={Theme}>
-        <TempDrawer onLogout={onLogout} />
-        {/* <NavBar /> */}
+        <TempDrawer onLogout={onLogout} state={state} toggleDrawer={toggleDrawer}/>
+        <NavBar state={state} toggleDrawer={toggleDrawer}/>
         <Switch>
           <Route
             path='/signup'

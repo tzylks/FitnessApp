@@ -8,11 +8,12 @@ import Checkbox from '@material-ui/core/Checkbox';
 export default function PaymentForm() {
   return (
     <React.Fragment>
+    <div style={{margin: '2vw'}}>
       <Typography variant="h6" gutterBottom>
         Payment method
       </Typography>
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} sm={3}>
           <TextField
             required
             id="cardName"
@@ -60,6 +61,7 @@ export default function PaymentForm() {
           />
         </Grid>
       </Grid>
+      </div>
     </React.Fragment>
   );
 }

@@ -1,16 +1,12 @@
 import * as React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
-import Toolbar from '@material-ui/core/Toolbar';
 import Paper from '@material-ui/core/Paper';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
@@ -56,7 +52,7 @@ export default function Checkout() {
   return (
     <>
       
-
+      <div style={{margin: '2vw'}}>
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper style={{backgroundColor: '#FEC260', width: '40vw', marginBottom: '6vh'}} variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
           <Typography component="h1" variant="h4" align="center">
@@ -107,6 +103,7 @@ export default function Checkout() {
         </Paper>
        
       </Container>
+    </div>
     </>
   );
 }
