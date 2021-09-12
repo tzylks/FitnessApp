@@ -12,8 +12,8 @@ const useStyles = makeStyles(theme => ({
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
+      marginBottom: '50vh',
       padding: theme.spacing(2),
-  
       '& .MuiTextField-root': {
         margin: theme.spacing(1),
         width: '300px',
@@ -50,7 +50,7 @@ function SignUp({onLogin}) {
     }
 
     return (
-      <div style={{backgroundColor: "#D62AD0", width: "25vw", margin:"auto", marginBottom: '25vh'}}>
+      <div style={{backgroundColor: "#D62AD0", width: "25vw", marginLeft:"auto", marginRight: 'auto', marginTop: '50vh'}}>
         <form className={classes.root} onSubmit={onSubmitSignUp}>
         <TextField
         label="Username"

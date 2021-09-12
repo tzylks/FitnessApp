@@ -87,7 +87,7 @@ function toggleDrawer() {
   return (
     <>
    
-    <div style={{backgroundColor: 'black', height: '110vh'}}>
+    <div>
       <ThemeProvider theme={Theme}>
         <TempDrawer onLogout={onLogout} state={state} toggleDrawer={toggleDrawer}/>
         <NavBar state={state} toggleDrawer={toggleDrawer}/>
