@@ -10,6 +10,7 @@ import AlbumIcon from '@material-ui/icons/Album';
 import LoyaltySharpIcon from '@material-ui/icons/LoyaltySharp';
 import LibraryMusicSharpIcon from '@material-ui/icons/LibraryMusicSharp';
 import {IconButton} from '@material-ui/core'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 import {useState} from 'react'
@@ -69,7 +70,7 @@ function NavBar({ search, setSearch, state, toggleDrawer }) {
 
   return (
     <div style={{cursor: "url('https://img.icons8.com/plasticine/100/000000/cursor.png') 39 39, auto;", width: "83vw", float: "right"}}>
-    <AppBar position="fixed" style={{background: "rgba(255, 76, 41, .0)"}}>
+    <AppBar position="fixed" style={{background: "rgba(255, 76, 41, .0)", boxShadow: 'none'}}>
       <Toolbar>
         <IconButton edge="start" color="inherit" onClick={toggleDrawer} className={classes.menuButton} style={{color: '#FEC260'}} aria-label="menu">
         <FitnessCenterIcon edge="start" color="primary" onClick={toggleDrawer} className={classes.menuButton} style={{color: '#FEC260'}} aria-label="menu"/>
@@ -94,7 +95,7 @@ function NavBar({ search, setSearch, state, toggleDrawer }) {
           <LoyaltySharpIcon color="secondary" style={{paddingRight: "15px", color: "white", }}/>
         </NavLink>
         <NavLink to="/addalbum">
-          <LibraryMusicSharpIcon color="secondary" style={{paddingRight: "15px", color: "white"}}/>
+          <AccountCircleIcon color="secondary" style={{paddingRight: "15px", color: "white"}}/>
         </NavLink>
       </Toolbar>
     </AppBar>

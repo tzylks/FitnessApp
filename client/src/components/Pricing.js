@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1, 1.5),
   },
   heroContent: {
+    marginTop: '15vh',
     marginBottom: '4vh'
   },
   cardHeader: {
