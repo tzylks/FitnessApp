@@ -65,3 +65,6 @@ function Exercise({exercise, onFavoriteClick, currentUser}){
 }
 
 export default Exercise
+
+
+
