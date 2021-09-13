@@ -55,7 +55,7 @@ function UserDashboard({ currentUser, setCurrentUser, favorites, onDeleteFavorit
 
     return (
         <>
-            {setCurrentUser(currentUser)}
+            
             <Typography component="h1" variant="h1" style={{ fontFamily: "'Monoton', cursive", textDecoration: 'none', background: 'linear-gradient(160deg, #D62AD0 10%, #78DEC7 24% )', webkitBackgroundClip: 'text', webkitTextFillColor: "transparent", marginTop: '17vh', marginLeft: '14vw' }}>
                 Let's Get Physical
             </Typography>
