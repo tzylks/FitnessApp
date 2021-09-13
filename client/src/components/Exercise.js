@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
+
 const useStyles = makeStyles({
     root: {
         maxWidth: 100,
@@ -35,7 +36,7 @@ function Exercise({exercise, onFavoriteClick, currentUser}){
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}
-                        // image={album.img_url}
+                        image={exercise.image}
                         title="album cover"
                     />
                     <CardContent>
@@ -65,6 +66,3 @@ function Exercise({exercise, onFavoriteClick, currentUser}){
 }
 
 export default Exercise
-
-
-

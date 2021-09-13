@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
     User.create(username: 'JohnDoe', password: 'password')
 
-    Exercise.create(activity: "Bicep Curl", muscle_group: "Biceps", image:"https://st3.depositphotos.com/1005676/32910/i/1600/depositphotos_329104634-stock-photo-human-body-anatomy-of-a.jpg")
+    Exercise.create(activity: "Bicep Curl", muscle_group: "Biceps", image:"https://64.media.tumblr.com/aba64c68d9d27592539dfcc01007ca79/8eb008d6cb133a9c-03/s500x750/836a3df45af0fe3389a918be33b94c94707ecbb4.gifv")
     Exercise.create(activity: "Hammer Curl", muscle_group: "Biceps", image:"https://st3.depositphotos.com/1005676/32910/i/1600/depositphotos_329104634-stock-photo-human-body-anatomy-of-a.jpg")
     Exercise.create(activity: "Lat Pull", muscle_group: "Latisssimus Dorsis", image:"https://st3.depositphotos.com/1005676/32910/i/1600/depositphotos_329104634-stock-photo-human-body-anatomy-of-a.jpg")
     Exercise.create(activity: "Crunches", muscle_group: "Abdominal", image:"https://st3.depositphotos.com/1005676/32910/i/1600/depositphotos_329104634-stock-photo-human-body-anatomy-of-a.jpg")
