@@ -46,12 +46,12 @@ function Exercise({exercise, onFavoriteClick, currentUser}){
                         <Typography gutterBottom variant="h5" component="h2">
                             {exercise.muscle_group}
                         </Typography>
-                        <Typography variant="body2"  component="p">
+                        {/* <Typography variant="body2"  component="p">
                             Hell yeah
                         </Typography>
                         <Typography variant="body2" component="p">
                             The Pump
-                        </Typography>
+                        </Typography> */}
                     </CardContent>
                 </CardActionArea>
                 <CardActions>

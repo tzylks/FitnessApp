@@ -47,10 +47,10 @@ function FavoriteExercises({currentUser, favorites, onDeleteFavorite}){
                             {favorites.muscle_group}
                         </Typography>
                         <Typography align='center' variant="body2"  component="p">
-                            Hell yeah
+                            Reps:
                         </Typography>
                         <Typography align='center' variant="body2" component="p">
-                            The Pump
+                            Sets:
                         </Typography>
                     </CardContent>
                 </CardActionArea>
