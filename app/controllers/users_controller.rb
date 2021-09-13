@@ -29,7 +29,7 @@ end
 private  
 
 def user_params
-    params.permit(:username, :password, :password_confirmation, :weight, :height, :location, :name, :profile_image)
+    params.permit(:username, :password, :password_confirmation, :weight, :height, :location, :name, :profile_image, :age)
 end
 
 

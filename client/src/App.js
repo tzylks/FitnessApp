@@ -143,7 +143,7 @@ exercise.activity.toLowerCase().includes(search.toLowerCase())
           <Route
             path='/usersettings'
             component={() =>
-              <UserSettings />}
+              <UserSettings  currentUser={currentUser}/>}
           />
 
         </Switch>

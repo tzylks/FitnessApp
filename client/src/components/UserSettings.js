@@ -21,20 +21,51 @@ const useStyles = makeStyles(theme => ({
         '& .MuiTextField-root': {
             margin: theme.spacing(1),
             width: '300px',
+            
         },
         '& .MuiButtonBase-root': {
             margin: theme.spacing(2),
-            marginRight: '17vw'
+            marginRight: '15vw',
+            display: 'flex'
         },
     },
 }));
 
-function UserSettings() {
+function UserSettings({ currentUser }) {
 
     const classes = useStyles();
     const [name, setName] = useState(null)
-    const [password, setPassword] = useState(null)
+    const [height, setHeight] = useState(null)
+    const [weight, setWeight] = useState(null)
+    const [location, setLocation] = useState(null)
+    const [age, setAge] = useState(null)
+    const [profileImage, setProfileImage] = useState(null)
     const [open, setOpen] = useState(true);
+
+    const id = currentUser.id
+
+    function onSubmitForm(e, id){
+       e.preventDefault();
+
+        const newObj = {
+            age: age,
+            name: name,
+            height: height,
+            weight: weight,
+            location: location,
+            profile_image: profileImage
+        }
+       
+        fetch(`/users/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newObj)
+        })
+        .then(res => res.json())
+        .then()
+    }
 
     return (
         <>
@@ -46,6 +77,7 @@ function UserSettings() {
                     style: {
                         background: 'linear-gradient(104deg,  #000 36.07%, #d62ad0 36.07%, #d62ad0 50%, #FEC260 50%, #FEC260 .13%, #d62ad0 44.13%, #d62ad0 50%,  #D62AD0 50%,  #D62AD0 86.07%, #78DEC7 19.07%, #78DEC7 89%, #FEC260 119%, #FEC260 99.13%, #d62ad0 94.13%, #d62ad0 100%)',
                         boxShadow: "0 19px 50px  rgba(0, 0, 0, 1')",
+                        width: '100vw'
                     },
                 }} style={{ background: 'linear-gradient(329deg, #D62AD0 25%, #78DEC7 24% )' }}>
                     <DialogTitle id="form-dialog-title" style={{ color: 'white', marginLeft: '30vw' }}>User Settings</DialogTitle>
@@ -53,7 +85,7 @@ function UserSettings() {
                         {/* <DialogContentText style={{ marginLeft: '26vw', color: '#FEC260' }}>
                 Login or signup below!
               </DialogContentText> */}
-                        <form className={classes.root}>
+                        <form className={classes.root} onSubmit={onSubmitForm}>
 
                             <TextField
                                 label="name"
@@ -73,19 +105,85 @@ function UserSettings() {
                             </div>
 
                             <TextField
-                                label="Password"
+                                label="Height"
                                 variant="outlined"
-                                type="password"
                                 required
-                                value={password}
-                                onChange={e => setPassword(e.target.value)}
+                                value={height}
+                                onChange={e => setHeight(e.target.value)}
                                 color="primary"
                                 style={{ background: '#FEC260' }}
                             />
 
-<div>
+                            <div>
                                 <Button type="submit" variant="contained" color="primary">
                                     Update Height
+                                </Button>
+                            </div>
+
+                            <TextField
+                                label="Weight"
+                                variant="outlined"
+                              
+                                required
+                                value={weight}
+                                onChange={e => setWeight(e.target.value)}
+                                color="primary"
+                                style={{ background: '#FEC260' }}
+                            />
+
+                            <div>
+                                <Button type="submit" variant="contained" color="primary">
+                                    Update Weight
+                                </Button>
+                            </div>
+
+                            <TextField
+                                label="Location"
+                                variant="outlined"
+                                
+                                required
+                                value={location}
+                                onChange={e => setLocation(e.target.value)}
+                                color="primary"
+                                style={{ background: '#FEC260' }}
+                            />
+
+                            <div>
+                                <Button type="submit" variant="contained" color="primary">
+                                    Update Location
+                                </Button>
+                            </div>
+
+                            <TextField
+                                label="Age"
+                                variant="outlined"
+                                required
+                                value={age}
+                                onChange={e => setAge(e.target.value)}
+                                color="primary"
+                                style={{ background: '#FEC260' }}
+                            />
+
+                            <div>
+                                <Button type="submit" variant="contained" color="primary">
+                                    Update Age
+                                </Button>
+                            </div>
+
+                            <TextField
+                                label="Profile Image"
+                                variant="outlined"
+                                
+                                required
+                                value={profileImage}
+                                onChange={e => setProfileImage(e.target.value)}
+                                color="primary"
+                                style={{ background: '#FEC260' }}
+                            />
+
+                            <div>
+                                <Button type="submit" variant="contained" color="primary">
+                                    Profile Image
                                 </Button>
                             </div>
 
