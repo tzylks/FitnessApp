@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     },
 });
 
-function FavoriteExercises({currentUser, favorites}){
+function FavoriteExercises({currentUser, favorites, onDeleteFavorite}){
 
     const classes = useStyles();
 
@@ -54,8 +54,13 @@ function FavoriteExercises({currentUser, favorites}){
                 </CardActionArea>
                 <CardActions>
                 <Tooltip title="Add this item to Exercise Plan" arrow style={{color: "black"}}>
+                    <Button size="small" onClick={() => onDeleteFavorite(favorites.id)} style={{ backgroundColor: '#FEC260' }}>
+                        Remove From Exercise Plan
+                    </Button>
+                </Tooltip>
+                <Tooltip title="Add this item to Exercise Plan" arrow style={{color: "black"}}>
                     <Button size="small" style={{ backgroundColor: '#FEC260' }}>
-                        Add to Exercise Plan
+                        Update Exercise
                     </Button>
                 </Tooltip>
                 </CardActions>

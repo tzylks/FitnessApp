@@ -2,7 +2,7 @@ import { LocalGasStationRounded } from "@material-ui/icons"
 import { useHistory } from 'react-router-dom'
 import FavoriteExercisesContainer from "./FavoriteExercisesContainer";
 
-function UserDashboard({ currentUser, setCurrentUser, favorites }) {
+function UserDashboard({ currentUser, setCurrentUser, favorites, onDeleteFavorite }) {
     const history = useHistory();
     if (!currentUser) {
         history.push('/login')
@@ -13,7 +13,7 @@ function UserDashboard({ currentUser, setCurrentUser, favorites }) {
     return (
         <>
             {/* <h2 style={{ color: "white" }}>Welcome back {currentUser.username}!</h2> */}
-            <FavoriteExercisesContainer favorites={favorites} currentUser={currentUser} setCurrentUser={setCurrentUser} />
+            <FavoriteExercisesContainer favorites={favorites} currentUser={currentUser} setCurrentUser={setCurrentUser} onDeleteFavorite={onDeleteFavorite} />
         </>
     )
 }

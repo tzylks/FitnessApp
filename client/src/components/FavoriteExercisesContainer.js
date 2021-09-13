@@ -3,7 +3,7 @@ import {Grid, Box} from '@material-ui/core'
 import FavoriteExercises from './FavoriteExercises'
 import {useState, useEffect} from 'react'
 
-function FavoriteExercisesContainer({currentUser, favorites, setCurrentUser}){
+function FavoriteExercisesContainer({currentUser, favorites, setCurrentUser, onDeleteFavorite}){
 
 
     setCurrentUser(currentUser)
@@ -14,7 +14,7 @@ function FavoriteExercisesContainer({currentUser, favorites, setCurrentUser}){
         <Grid container spacing={5} style={{paddingLeft: "30px", marginTop: '10px', marginBottom: '50px', width: "100vw"}} wrap="nowrap">
             {favorites.map(favorites => {
                 return (<Grid item key={favorites.id} xs={4} md={5} lg={4} style={{ display: "inline-block" }}>
-                    <FavoriteExercises favorites={favorites}  currentUser={currentUser} />  
+                    <FavoriteExercises favorites={favorites}  currentUser={currentUser} onDeleteFavorite={onDeleteFavorite} />  
                 </Grid> )
             })}
         </Grid>

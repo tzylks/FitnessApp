@@ -19,7 +19,6 @@ import Checkout from './components/Checkout.js'
 function App() {
 
   const [currentUser, setCurrentUser] = useState(false)
-  const [favoriteExercises, setFavoriteExercises] = useState([])
   const [exercises, setExercises] = useState([])
   const [favorites, setFavorites] = useState([])
   const [state, setState] = useState(false);
@@ -33,6 +32,14 @@ function App() {
     setCurrentUser(user)
   }
 
+  function onDeleteFavorite(id){
+    fetch(`/user_exercises/${id}`, {
+      method: "DELETE",
+    })
+
+    let newFavorites = favorites.filter(favorite => favorite.id !== id)
+    setFavorites(newFavorites)
+  }
   useEffect(() => {
     fetch('/exercises')
     .then(res => res.json())
@@ -76,7 +83,7 @@ function App() {
         body: JSON.stringify(newObj)
     })
     .then(res => res.json())
-    .then(data => setFavoriteExercises([...favoriteExercises, data]))
+    .then(data => setFavorites([...favorites, data]))
 }
 
 function toggleDrawer() {
@@ -120,7 +127,7 @@ function toggleDrawer() {
             <Route
             path='/userdashboard'
             component={() =>
-              <UserDashboard currentUser={currentUser} favorites={favorites} setCurrentUser={setCurrentUser} />}
+              <UserDashboard currentUser={currentUser} favorites={favorites} setCurrentUser={setCurrentUser} onDeleteFavorite={onDeleteFavorite} />}
           />
            <Route
             path='/checkout'
