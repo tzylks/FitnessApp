@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Login({ onLogin }) {
+function Login({ onLogin, currentUser }) {
   const classes = useStyles();
   const [username, setUsername] = useState(null)
   const [password, setPassword] = useState(null)
@@ -61,6 +61,10 @@ function Login({ onLogin }) {
       history.push('/dashboard')
     }
     );
+  }
+
+  if (currentUser) {
+    history.push('/userdashboard')
   }
 
   return (
@@ -118,11 +122,11 @@ function Login({ onLogin }) {
             background: 'linear-gradient(104deg,  #000 36.07%, #d62ad0 36.07%, #d62ad0 50%, #FEC260 50%, #FEC260 .13%, #d62ad0 44.13%, #d62ad0 50%,  #D62AD0 50%,  #D62AD0 86.07%, #78DEC7 19.07%, #78DEC7 89%, #FEC260 119%, #FEC260 99.13%, #d62ad0 94.13%, #d62ad0 100%)',
             boxShadow: "0 19px 50px  rgba(0, 0, 0, 1')",
           },
-        }} style={{ background: 'linear-gradient(329deg, #D62AD0 25%, #78DEC7 24% )'}}>
-          <DialogTitle id="form-dialog-title" style={{color: 'white', marginLeft: '30vw'}}>Login</DialogTitle>
+        }} style={{ background: 'linear-gradient(329deg, #D62AD0 25%, #78DEC7 24% )' }}>
+          <DialogTitle id="form-dialog-title" style={{ color: 'white', marginLeft: '30vw' }}>Login</DialogTitle>
           <DialogContent>
-            <DialogContentText style={{marginLeft: '26vw', color: '#FEC260'}}>
-             Login or signup below!
+            <DialogContentText style={{ marginLeft: '26vw', color: '#FEC260' }}>
+              Login or signup below!
             </DialogContentText>
             <form className={classes.root} onSubmit={handleSubmit}>
 
@@ -133,8 +137,8 @@ function Login({ onLogin }) {
                 value={username}
                 onChange={e => setUsername(e.target.value)}
                 color="primary"
-                style={{background: '#FEC260'}}
-                
+                style={{ background: '#FEC260' }}
+
 
               />
 
@@ -146,7 +150,7 @@ function Login({ onLogin }) {
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 color="primary"
-                style={{background: '#FEC260'}}
+                style={{ background: '#FEC260' }}
               />
 
               <div>

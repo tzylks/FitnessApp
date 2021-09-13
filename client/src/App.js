@@ -112,7 +112,7 @@ exercise.activity.toLowerCase().includes(search.toLowerCase())
           <Route
             path='/login'
             component={() =>
-              <Login onLogin={onLogin} />}
+              <Login onLogin={onLogin} currentUser={currentUser} />}
           />
           <Route
             path='/dashboard'
