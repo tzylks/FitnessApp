@@ -3,12 +3,11 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { InputBase } from '@material-ui/core'
-import BlurOnIcon from '@material-ui/icons/BlurOn';
 import SearchIcon from '@material-ui/icons/Search';
 import { NavLink } from 'react-router-dom';
 import AlbumIcon from '@material-ui/icons/Album';
 import LoyaltySharpIcon from '@material-ui/icons/LoyaltySharp';
-import LibraryMusicSharpIcon from '@material-ui/icons/LibraryMusicSharp';
+
 import {IconButton} from '@material-ui/core'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
@@ -61,8 +60,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NavBar({ search, setSearch, state, toggleDrawer }) {
-
+  const [hoverMe, setHoverMe] = useState(false)
   const classes = useStyles();
+
+  function onSetHover(){
+    setHoverMe(!hoverMe)
+  }
 
   function onChangeSearch(event) {
     setSearch(event.target.value)
@@ -88,14 +91,14 @@ function NavBar({ search, setSearch, state, toggleDrawer }) {
           }} placeholder="Search Albums" value={search} onChange={onChangeSearch}
           />
         </div>
-        <NavLink to='/albums'>
-          <AlbumIcon style={{paddingRight: "15px", color: "white"}} />
+        {/* <NavLink onMouseOver={onSetHover} to='/albums'>
+          <AlbumIcon style={{paddingRight: "15px", color: "white", fontSize: hoverMe ? '50px' : '24px'}} />
         </NavLink>
-        <NavLink to='/favorites'>
-          <LoyaltySharpIcon color="secondary" style={{paddingRight: "15px", color: "white", }}/>
-        </NavLink>
-        <NavLink to="/addalbum">
-          <AccountCircleIcon color="secondary" style={{paddingRight: "15px", color: "white"}}/>
+        <NavLink onMouseOver={onSetHover} to='/favorites'>
+          <LoyaltySharpIcon color="secondary" style={{paddingRight: "15px", color: "white", fontSize: hoverMe ? '50px' : '24px' }}/>
+        </NavLink> */}
+        <NavLink to="/addalbum" onFocus={onSetHover}>
+          <AccountCircleIcon color="secondary" style={{paddingRight: "15px", color: "white", fontSize: hoverMe ? '50px' : '45px'}}/>
         </NavLink>
       </Toolbar>
     </AppBar>
