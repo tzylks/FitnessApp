@@ -4,15 +4,14 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { InputBase } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import AlbumIcon from '@material-ui/icons/Album';
 import LoyaltySharpIcon from '@material-ui/icons/LoyaltySharp';
-
 import {IconButton} from '@material-ui/core'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 import {useState} from 'react'
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,12 +61,14 @@ const useStyles = makeStyles((theme) => ({
 function NavBar({ search, setSearch, state, toggleDrawer }) {
   const [hoverMe, setHoverMe] = useState(false)
   const classes = useStyles();
+  const history = useHistory();
 
   function onSetHover(){
     setHoverMe(!hoverMe)
   }
 
   function onChangeSearch(event) {
+    history.push('/exercises')
     setSearch(event.target.value)
   }
 
