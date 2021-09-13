@@ -32,10 +32,5 @@ def user_params
     params.permit(:username, :password, :password_confirmation, :weight, :height, :location, :name, :profile_image)
 end
 
-t.integer "age"
-    t.integer "height"
-    t.string "location"
-    t.string "name"
-    t.string "profile_image"
 
 end
