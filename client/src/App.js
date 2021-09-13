@@ -103,7 +103,7 @@ exercise.activity.toLowerCase().includes(search.toLowerCase())
     <div>
       <ThemeProvider theme={Theme}>
         <TempDrawer onLogout={onLogout} state={state} toggleDrawer={toggleDrawer}/>
-        <NavBar search={search} setSearch={setSearch} state={state} toggleDrawer={toggleDrawer} />
+        <NavBar search={search} setSearch={setSearch} state={state} toggleDrawer={toggleDrawer} currentUser={currentUser} />
         <Switch>
           <Route
             path='/signup'

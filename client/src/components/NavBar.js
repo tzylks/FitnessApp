@@ -11,6 +11,7 @@ import {IconButton} from '@material-ui/core'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 import {useState} from 'react'
+import { Box, Button } from '@material-ui/core'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -58,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function NavBar({ search, setSearch, state, toggleDrawer }) {
+function NavBar({ search, setSearch, state, toggleDrawer, currentUser }) {
   const [hoverMe, setHoverMe] = useState(false)
   const classes = useStyles();
   const history = useHistory();
@@ -98,9 +99,36 @@ function NavBar({ search, setSearch, state, toggleDrawer }) {
         <NavLink onMouseOver={onSetHover} to='/favorites'>
           <LoyaltySharpIcon color="secondary" style={{paddingRight: "15px", color: "white", fontSize: hoverMe ? '50px' : '24px' }}/>
         </NavLink> */}
-        <NavLink to="/usersettings" onFocus={onSetHover}>
+        {/* <NavLink to="/usersettings" onFocus={onSetHover}>
           <AccountCircleIcon color="secondary" style={{paddingRight: "15px", color: "white", fontSize: hoverMe ? '50px' : '45px'}}/>
-        </NavLink>
+        </NavLink> */}
+        <Button
+            color="inherit"
+            component={NavLink}
+            to="/usersettings"
+          >
+        <Box
+              border={1}
+              borderRadius="70%"
+              overflow="hidden"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              height="50px"
+              width="50px"
+              style={{borderColor: '#FEC260'}}
+            >
+              {currentUser ?   <img
+                style={{
+                  width: "100%",
+                  height: "100%"
+                }}
+                src={currentUser.profile_image !== null ? currentUser.profile_image : null}
+                alt="profile"
+              /> : <AccountCircleIcon style={{fontSize: '60px', color: 'white'}} /> }
+            
+            </Box>
+      </Button>
       </Toolbar>
     </AppBar>
     </div>
