@@ -36,7 +36,7 @@ function FavoriteExercises({currentUser, favorites, onDeleteFavorite}){
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}
-                        // image={album.img_url}
+                        image={favorites.image}
                         title="album cover"
                     />
                     <CardContent>

@@ -42,6 +42,7 @@ function UserSettings({ currentUser }) {
     const [profileImage, setProfileImage] = useState(null)
     const [open, setOpen] = useState(true);
 
+    const history = useHistory();
     const id = currentUser.id
 
     function onSubmitForm(e, id){
@@ -63,8 +64,8 @@ function UserSettings({ currentUser }) {
             },
             body: JSON.stringify(newObj)
         })
-        .then(res => res.json())
-        .then()
+        history.push('/exercises')
+        
     }
 
     return (

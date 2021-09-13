@@ -25,7 +25,7 @@ class UserExercisesController < ApplicationController
     private
 
     def obj_params
-        params.permit(:exercise_id, :user_id, :activity, :muscle_group)
+        params.permit(:exercise_id, :user_id, :activity, :muscle_group, :image)
     end
 
 end

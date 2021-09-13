@@ -14,6 +14,7 @@ import Footer from './components/Footer.js'
 import UserDashboard from './components/UserDashboard'
 import Checkout from './components/Checkout.js'
 import UserSettings from './components/UserSettings.js'
+import { FavoriteSharp } from '@material-ui/icons';
 
 
 
@@ -71,11 +72,13 @@ function App() {
         exercise_id: exercise.id,
         user_id: currentUser.id,
         activity: exercise.activity,
-        muscle_group: exercise.muscle_group
+        muscle_group: exercise.muscle_group,
+        image: exercise.image
     }
 
     console.log(exercise.id)
     console.log(currentUser.id)
+
 
     fetch('/user_exercises', {
         method: 'POST',
