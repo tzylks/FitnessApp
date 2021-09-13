@@ -98,7 +98,7 @@ function NavBar({ search, setSearch, state, toggleDrawer }) {
         <NavLink onMouseOver={onSetHover} to='/favorites'>
           <LoyaltySharpIcon color="secondary" style={{paddingRight: "15px", color: "white", fontSize: hoverMe ? '50px' : '24px' }}/>
         </NavLink> */}
-        <NavLink to="/addalbum" onFocus={onSetHover}>
+        <NavLink to="/usersettings" onFocus={onSetHover}>
           <AccountCircleIcon color="secondary" style={{paddingRight: "15px", color: "white", fontSize: hoverMe ? '50px' : '45px'}}/>
         </NavLink>
       </Toolbar>

@@ -13,6 +13,7 @@ import Pricing from './components/Pricing.js'
 import Footer from './components/Footer.js'
 import UserDashboard from './components/UserDashboard'
 import Checkout from './components/Checkout.js'
+import UserSettings from './components/UserSettings.js'
 
 
 
@@ -138,6 +139,11 @@ exercise.activity.toLowerCase().includes(search.toLowerCase())
             path='/checkout'
             component={() =>
               <Checkout />}
+          />
+          <Route
+            path='/usersettings'
+            component={() =>
+              <UserSettings />}
           />
 
         </Switch>
