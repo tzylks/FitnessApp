@@ -21,6 +21,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(false)
   const [exercises, setExercises] = useState([])
   const [favorites, setFavorites] = useState([])
+  const [search, setSearch] = useState("");
   const [state, setState] = useState(false);
   
   
@@ -89,6 +90,10 @@ function App() {
 function toggleDrawer() {
   setState(!state);
 };
+
+const exercisesToDisplay = exercises.filter((exercise) =>
+exercise.activity.toLowerCase().includes(search.toLowerCase())
+);
   
 
   return (
@@ -97,7 +102,7 @@ function toggleDrawer() {
     <div>
       <ThemeProvider theme={Theme}>
         <TempDrawer onLogout={onLogout} state={state} toggleDrawer={toggleDrawer}/>
-        <NavBar state={state} toggleDrawer={toggleDrawer}/>
+        <NavBar search={search} setSearch={setSearch} state={state} toggleDrawer={toggleDrawer} />
         <Switch>
           <Route
             path='/signup'
@@ -117,7 +122,7 @@ function toggleDrawer() {
            <Route
             path='/exercises'
             component={() =>
-              <Exercises exercises={exercises} currentUser={currentUser} onFavoriteClick={onFavoriteClick} />}
+              <Exercises exercises={exercisesToDisplay} currentUser={currentUser} onFavoriteClick={onFavoriteClick} />}
           />
             <Route
             path='/pricing'

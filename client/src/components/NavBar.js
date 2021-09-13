@@ -88,7 +88,7 @@ function NavBar({ search, setSearch, state, toggleDrawer }) {
           <InputBase classes={{
             root: classes.inputRoot,
             input: classes.inputInput,
-          }} placeholder="Search Albums" value={search} onChange={onChangeSearch}
+          }} placeholder="Search Exercises" value={search} onChange={onChangeSearch}
           />
         </div>
         {/* <NavLink onMouseOver={onSetHover} to='/albums'>
