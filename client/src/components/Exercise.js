@@ -7,6 +7,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import { CardActions } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 const useStyles = makeStyles({
     root: {
@@ -54,9 +55,9 @@ function Exercise({exercise, onFavoriteClick, currentUser}){
                 </CardActionArea>
                 <CardActions>
                 <Tooltip title="Add this item to Exercise Plan" arrow style={{color: "black"}}>
-                    <Button onClick={() => onFavoriteClick(exercise, currentUser)} size="small" style={{ backgroundColor: '#FEC260' }}>
+                    <AddCircleIcon onClick={() => onFavoriteClick(exercise, currentUser)} size="small" style={{ color: '#FEC260' }}>
                         Add to Exercise Plan
-                    </Button>
+                    </AddCircleIcon>
                 </Tooltip>
                 </CardActions>
             </Card>

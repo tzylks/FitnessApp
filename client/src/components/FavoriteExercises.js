@@ -7,6 +7,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import { CardActions } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
+import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
+import EditSharpIcon from '@material-ui/icons/EditSharp';
 
 const useStyles = makeStyles({
     root: {
@@ -38,30 +40,30 @@ function FavoriteExercises({currentUser, favorites, onDeleteFavorite}){
                         title="album cover"
                     />
                     <CardContent>
-                        <Typography gutterBottom variant="h4" component="h2" color="secondary">
+                        <Typography align='center' gutterBottom variant="h4" component="h2" color="secondary">
                             {favorites.activity}
                         </Typography>
-                        <Typography gutterBottom variant="h5" component="h2">
+                        <Typography align='center' gutterBottom variant="h5" component="h2">
                             {favorites.muscle_group}
                         </Typography>
-                        <Typography variant="body2"  component="p">
+                        <Typography align='center' variant="body2"  component="p">
                             Hell yeah
                         </Typography>
-                        <Typography variant="body2" component="p">
+                        <Typography align='center' variant="body2" component="p">
                             The Pump
                         </Typography>
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                <Tooltip title="Add this item to Exercise Plan" arrow style={{color: "black"}}>
-                    <Button size="small" onClick={() => onDeleteFavorite(favorites.id)} style={{ backgroundColor: '#FEC260' }}>
+                <Tooltip title="Remove this Exercise" arrow style={{color: "black"}}>
+                    <DeleteSharpIcon size="small" onClick={() => onDeleteFavorite(favorites.id)} style={{ color: '#FEC260', marginLeft: "auto", marginRight: '10px', fontSize: "40px" }}>
                         Remove From Exercise Plan
-                    </Button>
+                    </DeleteSharpIcon>
                 </Tooltip>
-                <Tooltip title="Add this item to Exercise Plan" arrow style={{color: "black"}}>
-                    <Button size="small" style={{ backgroundColor: '#FEC260' }}>
+                <Tooltip title="Edit this Exercise" arrow style={{color: "black"}}>
+                    <EditSharpIcon size="small" style={{ color: '#FEC260', marginLeft: '0', marginRight: 'auto', fontSize: "40px"  }}>
                         Update Exercise
-                    </Button>
+                    </EditSharpIcon>
                 </Tooltip>
                 </CardActions>
             </Card>
