@@ -4,7 +4,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import Tooltip from '@material-ui/core/Tooltip';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import { CardActions } from '@material-ui/core';
+import { CardActions, Container, Box } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
 import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
@@ -18,6 +18,7 @@ const useStyles = makeStyles({
     },
     media: {
         height: 283,
+        
     },
     colored: {
         backgroundColor: "#000",
@@ -34,7 +35,8 @@ function FavoriteExercises({currentUser, favorites, onDeleteFavorite}){
     const classes = useStyles();
 
     return(
-        <Card className="border" style={{ color: 'white'}}>
+        
+        <Card className={classes.colored} style={{ color: 'white'}}>
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}
@@ -69,6 +71,7 @@ function FavoriteExercises({currentUser, favorites, onDeleteFavorite}){
                 </Tooltip>
                 </CardActions>
             </Card>
+        
     )
 }
 

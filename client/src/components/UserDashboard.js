@@ -26,13 +26,14 @@ const useStyles = makeStyles((theme) => ({
         flex: '1 0 auto',
         fontSize: '40px',
         color: "white",
-        marginLeft: '10vw',
+        marginLeft: '1vw',
+        marginRight: '5vw',
         width: '50vw',
         flexDirection: 'row',
         border: '1px solid #green'
     },
     cover: {
-        backgroundSize: "contain",
+        backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         height: 300,
         width: '100vw',
@@ -75,14 +76,14 @@ function UserDashboard({ setFavorites, errorMe, currentUser, setCurrentUser, fav
                                 Welcome back {currentUser.username}
                                 <Box
                                 border={1}
-                                borderRadius="70%"
+                                borderRadius="90%"
                                 overflow="hidden"
                                 display="flex"
                                 justifyContent="center"
                                 alignItems="center"
-                                height="100px"
-                                width="100px"
-                                style={{ borderColor: '#FEC260', marginRight: '10vw'}}
+                                height="20vh"
+                                width="12vw"
+                                style={{ borderColor: '#FEC260', marginLeft: '5.5vw', marginTop: '2vh'}}
                             >
                                 <img
                                     style={{
@@ -99,7 +100,7 @@ function UserDashboard({ setFavorites, errorMe, currentUser, setCurrentUser, fav
                             <Typography variant="subtitle1" color="textSecondary">
                                 Your Stats:
                             </Typography>
-                            <Typography variant="h5" color="primary" style={{marginTop: '5vh'}}  >
+                            <Typography variant="h4" color="primary" style={{marginLeft: '4vw', marginTop: '5vh', lineHeight: '50px', wrap: 'no-wrap'}}  >
                                 Name: {currentUser.name}
                                 <br />
                                 height: {currentUser.height}
