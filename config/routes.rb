@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  
-  resources :user_goals, only: [:create, :update, :destroy]
   resources :user_exercises, only: [:create, :show, :index, :destroy]
   resources :exercises
-  resources :users
+  resources :users do
+    resources :user_goals, only: [:create, :update, :destroy]
+  end
   get '/me', to: 'users#show'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

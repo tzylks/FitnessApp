@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 2021_09_13_224040) do
     t.string "muscle_group"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "image"
     t.integer "sets"
     t.integer "reps"
+    t.string "image"
     t.index ["exercise_id"], name: "index_user_exercises_on_exercise_id"
     t.index ["user_id"], name: "index_user_exercises_on_user_id"
   end
