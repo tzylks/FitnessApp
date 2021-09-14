@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function UserDashboard({ currentUser, setCurrentUser, favorites, onDeleteFavorite }) {
+function UserDashboard({ setFavorites, errorMe, currentUser, setCurrentUser, favorites, onDeleteFavorite }) {
     const history = useHistory();
     const classes = useStyles();
     const theme = useTheme();
@@ -114,7 +114,7 @@ function UserDashboard({ currentUser, setCurrentUser, favorites, onDeleteFavorit
             </Grid> */}
 
             {/* <h2 style={{ color: "white" }}>Welcome back {currentUser.username}!</h2> */}
-            <FavoriteExercisesContainer favorites={favorites} currentUser={currentUser} setCurrentUser={setCurrentUser} onDeleteFavorite={onDeleteFavorite} />
+            <FavoriteExercisesContainer setFavorites={setFavorites} errorMe={errorMe} favorites={favorites} currentUser={currentUser} setCurrentUser={setCurrentUser} onDeleteFavorite={onDeleteFavorite} />
         </>
     )
 }

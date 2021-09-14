@@ -11,7 +11,7 @@ function Exercises({exercises, currentUser, favoriteExercises, onFavoriteClick})
         <Grid container spacing={5} style={{paddingLeft: "30px", marginTop: '10px', marginBottom: '50px', width: "100vw"}} wrap="nowrap">
             {exercises.map(exercise => {
                 return (<Grid item key={exercise.id} xs={4} md={5} lg={4} style={{ display: "inline-block" }}>
-                    <Exercise exercise={exercise} onFavoriteClick={onFavoriteClick} currentUser={currentUser} />  
+                    <Exercise  exercise={exercise} onFavoriteClick={onFavoriteClick} currentUser={currentUser} />  
                 </Grid> )
             })}
         </Grid>

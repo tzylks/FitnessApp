@@ -25,17 +25,20 @@ function App() {
   const [favorites, setFavorites] = useState([])
   const [search, setSearch] = useState("");
   const [state, setState] = useState(false);
-  
-  
-  function onLogout(){
+  const [errorMe, setErrorMe] = useState(false)
+
+
+
+
+  function onLogout() {
     setCurrentUser(false)
   }
-  
+
   function onLogin(user) {
     setCurrentUser(user)
   }
 
-  function onDeleteFavorite(id){
+  function onDeleteFavorite(id) {
     fetch(`/user_exercises/${id}`, {
       method: "DELETE",
     })
@@ -45,17 +48,17 @@ function App() {
   }
   useEffect(() => {
     fetch('/exercises')
-    .then(res => res.json())
-    .then(setExercises)
+      .then(res => res.json())
+      .then(setExercises)
   }, [])
 
   let id = currentUser.id
 
   useEffect(() => {
     fetch(`/users/${id}`)
-    .then(res => res.json())
-    .then(data => setFavorites(data.user_exercises))
-}, [currentUser])
+      .then(res => res.json())
+      .then(data => setFavorites(data.user_exercises))
+  }, [currentUser])
 
   useEffect(() => {
     // auto-login
@@ -68,12 +71,13 @@ function App() {
 
   function onFavoriteClick(exercise, currentUser) {
 
+
     const newObj = {
-        exercise_id: exercise.id,
-        user_id: currentUser.id,
-        activity: exercise.activity,
-        muscle_group: exercise.muscle_group,
-        image: exercise.image
+      exercise_id: exercise.id,
+      user_id: currentUser.id,
+      activity: exercise.activity,
+      muscle_group: exercise.muscle_group,
+      image: exercise.image
     }
 
     console.log(exercise.id)
@@ -81,77 +85,95 @@ function App() {
 
 
     fetch('/user_exercises', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newObj)
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newObj)
     })
-    .then(res => res.json())
-    .then(data => setFavorites([...favorites, data]))
-}
+      .then(res => res.json())
+      .then(data => setFavorites([...favorites, data]))
+      .catch(error => setErrorMe(error))
+  }
 
-function toggleDrawer() {
-  setState(!state);
-};
+  function toggleDrawer() {
+    setState(!state);
+  };
 
-const exercisesToDisplay = exercises.filter((exercise) =>
-exercise.activity.toLowerCase().includes(search.toLowerCase())
-);
-  
+  const exercisesToDisplay = exercises.filter((exercise) =>
+    exercise.activity.toLowerCase().includes(search.toLowerCase())
+  );
+
+  useEffect(() => {
+    if (favorites) {
+      const filteredFavorites = favorites.filter((power, toThe, yellowVests) => yellowVests.map(updateDemocracy => updateDemocracy['activity']).indexOf(power['activity']) === toThe)
+      setFavorites(filteredFavorites)
+    }
+    else {
+      return null
+    }
+  }, [favorites])
+
+  // if (favorites) {
+  //   const filteredFavorites = favorites.filter((power, toThe, yellowVests) => yellowVests.map(updateDemocracy => updateDemocracy['activity']).indexOf(power['activity']) === toThe)
+  //   setFavorites(filteredFavorites)
+  // }
+  // else {
+  //   return null
+  // }
 
   return (
     <>
-   
-    <div>
-      <ThemeProvider theme={Theme}>
-        <TempDrawer onLogout={onLogout} state={state} toggleDrawer={toggleDrawer}/>
-        <NavBar search={search} setSearch={setSearch} state={state} toggleDrawer={toggleDrawer} currentUser={currentUser} />
-        <Switch>
-          <Route
-            path='/signup'
-            component={() =>
-              <SignUp onLogin={onLogin} setCurrentUser={setCurrentUser} />}
-          />
-          <Route
-            path='/login'
-            component={() =>
-              <Login onLogin={onLogin} currentUser={currentUser} />}
-          />
-          <Route
-            path='/dashboard'
-            component={() =>
-              <Dashboard />}
-          />
-           <Route
-            path='/exercises'
-            component={() =>
-              <Exercises exercises={exercisesToDisplay} currentUser={currentUser} onFavoriteClick={onFavoriteClick} />}
-          />
-            <Route
-            path='/pricing'
-            component={() =>
-              <Pricing />}
-          />
-            <Route
-            path='/userdashboard'
-            component={() =>
-              <UserDashboard currentUser={currentUser} favorites={favorites} setCurrentUser={setCurrentUser} onDeleteFavorite={onDeleteFavorite} />}
-          />
-           <Route
-            path='/checkout'
-            component={() =>
-              <Checkout />}
-          />
-          <Route
-            path='/usersettings'
-            component={() =>
-              <UserSettings  currentUser={currentUser}/>}
-          />
 
-        </Switch>
-        <Footer />
-      </ThemeProvider>
+      <div>
+        <ThemeProvider theme={Theme}>
+          <TempDrawer onLogout={onLogout} state={state} toggleDrawer={toggleDrawer} />
+          <NavBar search={search} setSearch={setSearch} state={state} toggleDrawer={toggleDrawer} currentUser={currentUser} />
+          <Switch>
+            <Route
+              path='/signup'
+              component={() =>
+                <SignUp onLogin={onLogin} setCurrentUser={setCurrentUser} />}
+            />
+            <Route
+              path='/login'
+              component={() =>
+                <Login onLogin={onLogin} currentUser={currentUser} />}
+            />
+            <Route
+              path='/dashboard'
+              component={() =>
+                <Dashboard />}
+            />
+            <Route
+              path='/exercises'
+              component={() =>
+                <Exercises exercises={exercisesToDisplay} currentUser={currentUser} onFavoriteClick={onFavoriteClick} />}
+            />
+            <Route
+              path='/pricing'
+              component={() =>
+                <Pricing />}
+            />
+            <Route
+              path='/userdashboard'
+              component={() =>
+                <UserDashboard setFavorites={setFavorites} errorMe={errorMe} currentUser={currentUser} favorites={favorites} setCurrentUser={setCurrentUser} onDeleteFavorite={onDeleteFavorite} />}
+            />
+            <Route
+              path='/checkout'
+              component={() =>
+                <Checkout />}
+            />
+            <Route
+              path='/usersettings'
+              component={() =>
+                <UserSettings currentUser={currentUser} />}
+            />
+
+          </Switch>
+          <Footer />
+        </ThemeProvider>
       </div>
     </>
   );
