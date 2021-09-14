@@ -109,7 +109,7 @@ function NavBar({ search, setSearch, state, toggleDrawer, currentUser }) {
           >
         <Box
               border={1}
-              borderRadius="70%"
+              borderRadius="10%"
               overflow="hidden"
               display="flex"
               justifyContent="center"
@@ -118,12 +118,12 @@ function NavBar({ search, setSearch, state, toggleDrawer, currentUser }) {
               width="50px"
               style={{borderColor: '#FEC260'}}
             >
-              {currentUser ?   <img
+              {currentUser ? <img
                 style={{
                   width: "100%",
-                  height: "100%"
+                  height: "auto"
                 }}
-                src={currentUser.profile_image !== null ? currentUser.profile_image : null}
+                src={currentUser.profile_image !== null ? currentUser.profile_image : "https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png"}
                 alt="profile"
               /> : <AccountCircleIcon style={{fontSize: '60px', color: 'white'}} /> }
             

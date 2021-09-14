@@ -8,6 +8,7 @@ import { CardActions } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import Draggable from 'react-draggable'
 
 
 const useStyles = makeStyles({
@@ -32,6 +33,7 @@ function Exercise({exercise, onFavoriteClick, currentUser}){
     const classes = useStyles();
 
     return(
+    <Draggable>
         <Card className={classes.colored}>
                 <CardActionArea>
                     <CardMedia
@@ -62,6 +64,7 @@ function Exercise({exercise, onFavoriteClick, currentUser}){
                 </Tooltip>
                 </CardActions>
             </Card>
+        </Draggable>
     )
 }
 

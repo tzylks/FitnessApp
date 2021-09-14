@@ -72,35 +72,35 @@ function UserDashboard({ setFavorites, errorMe, currentUser, setCurrentUser, fav
                     />
                     <div className={classes.details}>
                         <CardContent className={classes.content}>
-                            <Typography component="h3" variant="h3" style={{marginTop: '4vh'}} >
+                            <Typography component="h3" variant="h3" style={{ marginTop: '4vh' }} >
                                 Welcome back {currentUser.username}
                                 <Box
-                                border={1}
-                                borderRadius="90%"
-                                overflow="hidden"
-                                display="flex"
-                                justifyContent="center"
-                                alignItems="center"
-                                height="20vh"
-                                width="12vw"
-                                style={{ borderColor: '#FEC260', marginLeft: '5.5vw', marginTop: '2vh'}}
-                            >
-                                <img
-                                    style={{
-                                        width: "100%",
-                                        height: "100%",
-                                    }}
-                                    src={currentUser.profile_image}
-                                    alt="profile"
-                                   
-                                />
+                                    // border={1}
+                                    borderRadius="10%"
+                                    overflow="hidden"
+                                    display="flex"
+                                    justifyContent="center"
+                                    alignItems="center"
+                                    height="20vh"
+                                    width="12vw"
+                                    style={{ borderColor: '#FEC260', marginLeft: '5.5vw', marginTop: '2vh' }}
+                                >
+                                    <img
+                                        style={{
+                                            width: "100%",
+                                            height: "auto",
+                                        }}
+                                        src={currentUser.profile_image}
+                                        alt="profile"
 
-                            </Box>
+                                    />
+
+                                </Box>
                             </Typography>
                             <Typography variant="subtitle1" color="textSecondary">
                                 Your Stats:
                             </Typography>
-                            <Typography variant="h4" color="primary" style={{marginLeft: '4vw', marginTop: '5vh', lineHeight: '50px', wrap: 'no-wrap'}}  >
+                            <Typography variant="h4" color="primary" style={{ marginLeft: '4vw', marginTop: '5vh', lineHeight: '50px', wrap: 'no-wrap' }}  >
                                 Name: {currentUser.name}
                                 <br />
                                 height: {currentUser.height}
@@ -116,6 +116,10 @@ function UserDashboard({ setFavorites, errorMe, currentUser, setCurrentUser, fav
             </Box>
             {/* </Grid>
             </Grid> */}
+
+            <Typography component="h3" variant="h3" style={{ fontFamily: "'Monoton', cursive", textDecoration: 'none', background: 'linear-gradient(160deg, #D62AD0 10%, #78DEC7 24% )', webkitBackgroundClip: 'text', webkitTextFillColor: "transparent", marginTop: '17vh', marginLeft: '14vw' }}>
+                Your Fitness Plan
+            </Typography>
 
             {/* <h2 style={{ color: "white" }}>Welcome back {currentUser.username}!</h2> */}
             <FavoriteExercisesContainer setFavorites={setFavorites} errorMe={errorMe} favorites={favorites} currentUser={currentUser} setCurrentUser={setCurrentUser} onDeleteFavorite={onDeleteFavorite} />
