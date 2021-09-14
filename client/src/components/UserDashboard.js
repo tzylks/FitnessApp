@@ -6,7 +6,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import { Box } from '@material-ui/core';
+import { Box, Container } from '@material-ui/core';
+import Draggable from 'react-draggable'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -117,12 +118,22 @@ function UserDashboard({ setFavorites, errorMe, currentUser, setCurrentUser, fav
             {/* </Grid>
             </Grid> */}
 
-            <Typography component="h3" variant="h3" style={{ fontFamily: "'Monoton', cursive", textDecoration: 'none', background: 'linear-gradient(160deg, #D62AD0 10%, #78DEC7 24% )', webkitBackgroundClip: 'text', webkitTextFillColor: "transparent", marginTop: '17vh', marginLeft: '14vw' }}>
+            <Typography style={{ marginLeft: '17vw', fontSize: '10rem', textDecoration: 'none', background: 'linear-gradient(90deg, #FEC260 10%, #78DEC7 24% )', webkitBackgroundClip: 'text', webkitTextFillColor: "transparent", marginTop: '10vh'}}>
                 Your Fitness Plan
             </Typography>
 
             {/* <h2 style={{ color: "white" }}>Welcome back {currentUser.username}!</h2> */}
             <FavoriteExercisesContainer setFavorites={setFavorites} errorMe={errorMe} favorites={favorites} currentUser={currentUser} setCurrentUser={setCurrentUser} onDeleteFavorite={onDeleteFavorite} />
+
+            <Typography style={{ marginLeft: '17vw', fontSize: '10rem', textDecoration: 'none', background: 'linear-gradient(90deg, #FEC260 10%, #78DEC7 24% )', webkitBackgroundClip: 'text', webkitTextFillColor: "transparent", marginTop: '5vh'}}>
+                Today's Exercises
+            </Typography>
+
+            <Container style={{height: '100vh'}}>
+                <Box>
+
+                </Box>
+            </Container>
         </>
     )
 }

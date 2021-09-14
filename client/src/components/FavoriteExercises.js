@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
 import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
 import EditSharpIcon from '@material-ui/icons/EditSharp';
+import Draggable from 'react-draggable'
 
 import '../index.css'
 
@@ -18,25 +19,26 @@ const useStyles = makeStyles({
     },
     media: {
         height: 283,
-        
+
     },
     colored: {
         backgroundColor: "#000",
         color: "#fff",
         width: "300px",
         border: 'solid 3px #78DEC7',
-        marginTop: "10vh"
+        marginTop: "5vh"
 
     },
 });
 
-function FavoriteExercises({currentUser, favorites, onDeleteFavorite}){
+function FavoriteExercises({ currentUser, favorites, onDeleteFavorite }) {
 
     const classes = useStyles();
 
-    return(
-        
-        <Card className={classes.colored} style={{ color: 'white'}}>
+    return (
+    <Container>
+        <Draggable>
+            <Card className={classes.colored} style={{ color: 'white' }}>
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}
@@ -50,7 +52,7 @@ function FavoriteExercises({currentUser, favorites, onDeleteFavorite}){
                         <Typography align='center' gutterBottom variant="h5" component="h2">
                             {favorites.muscle_group}
                         </Typography>
-                        <Typography align='center' variant="body2"  component="p">
+                        <Typography align='center' variant="body2" component="p">
                             Reps:
                         </Typography>
                         <Typography align='center' variant="body2" component="p">
@@ -59,19 +61,20 @@ function FavoriteExercises({currentUser, favorites, onDeleteFavorite}){
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                <Tooltip title="Remove this Exercise" arrow style={{color: "black"}}>
-                    <DeleteSharpIcon size="small" onClick={() => onDeleteFavorite(favorites.id)} style={{ color: '#FEC260', marginLeft: "auto", marginRight: '10px', fontSize: "40px" }}>
-                        Remove From Exercise Plan
-                    </DeleteSharpIcon>
-                </Tooltip>
-                <Tooltip title="Edit this Exercise" arrow style={{color: "black"}}>
-                    <EditSharpIcon size="small" style={{ color: '#FEC260', marginLeft: '0', marginRight: 'auto', fontSize: "40px"  }}>
-                        Update Exercise
-                    </EditSharpIcon>
-                </Tooltip>
+                    <Tooltip title="Remove this Exercise" arrow style={{ color: "black" }}>
+                        <DeleteSharpIcon size="small" onClick={() => onDeleteFavorite(favorites.id)} style={{ color: '#FEC260', marginLeft: "auto", marginRight: '10px', fontSize: "40px" }}>
+                            Remove From Exercise Plan
+                        </DeleteSharpIcon>
+                    </Tooltip>
+                    <Tooltip title="Edit this Exercise" arrow style={{ color: "black" }}>
+                        <EditSharpIcon size="small" style={{ color: '#FEC260', marginLeft: '0', marginRight: 'auto', fontSize: "40px" }}>
+                            Update Exercise
+                        </EditSharpIcon>
+                    </Tooltip>
                 </CardActions>
             </Card>
-        
+        </Draggable>
+        </Container>
     )
 }
 
