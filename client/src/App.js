@@ -92,9 +92,12 @@ function App() {
       body: JSON.stringify(newObj)
     })
       .then(res => res.json())
-      .then(data => setFavorites([...favorites, data]))
+      .then(data => {
+        if (!data.errors) {
+        setFavorites([...favorites, data])}})
       .catch(error => setErrorMe(error))
   }
+
 
   function toggleDrawer() {
     setState(!state);
@@ -104,15 +107,15 @@ function App() {
     exercise.activity.toLowerCase().includes(search.toLowerCase())
   );
 
-  useEffect(() => {
-    if (favorites) {
-      const filteredFavorites = favorites.filter((power, toThe, yellowVests) => yellowVests.map(updateDemocracy => updateDemocracy['activity']).indexOf(power['activity']) === toThe)
-      setFavorites(filteredFavorites)
-    }
-    else {
-      return null
-    }
-  }, [favorites])
+  // useEffect(() => {
+  //   if (favorites) {
+  //     const filteredFavorites = favorites.filter((power, toThe, yellowVests) => yellowVests.map(updateDemocracy => updateDemocracy['activity']).indexOf(power['activity']) === toThe)
+  //     setFavorites(filteredFavorites)
+  //   }
+  //   else {
+  //     return null
+  //   }
+  // }, [favorites])
 
   // if (favorites) {
   //   const filteredFavorites = favorites.filter((power, toThe, yellowVests) => yellowVests.map(updateDemocracy => updateDemocracy['activity']).indexOf(power['activity']) === toThe)
@@ -121,6 +124,10 @@ function App() {
   // else {
   //   return null
   // }
+
+  // const filteredFavorites = favorites.filter(filter => filter.errors === true)
+  // console.log(filteredFavorites)
+     
 
   return (
     <>

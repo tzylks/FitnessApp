@@ -12,8 +12,9 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
         marginTop: '10vh',
-        width: '100vw',
+        width: '99vw',
         background: 'black',
+        border: '5px solid #fff'
 
     },
     details: {
@@ -27,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
         color: "white",
         marginLeft: '10vw',
         width: '50vw',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        border: '1px solid #green'
     },
     cover: {
         backgroundSize: "contain",
@@ -89,6 +91,7 @@ function UserDashboard({ setFavorites, errorMe, currentUser, setCurrentUser, fav
                                     }}
                                     src={currentUser.profile_image}
                                     alt="profile"
+                                   
                                 />
 
                             </Box>

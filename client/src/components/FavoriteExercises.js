@@ -10,6 +10,8 @@ import Button from '@material-ui/core/Button'
 import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
 import EditSharpIcon from '@material-ui/icons/EditSharp';
 
+import '../index.css'
+
 const useStyles = makeStyles({
     root: {
         maxWidth: 100,
@@ -32,7 +34,7 @@ function FavoriteExercises({currentUser, favorites, onDeleteFavorite}){
     const classes = useStyles();
 
     return(
-        <Card className={classes.colored}>
+        <Card className="border" style={{ color: 'white'}}>
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}

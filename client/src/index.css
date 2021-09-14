@@ -14,3 +14,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.border {
+  overflow: hidden;
+  background: linear-gradient(90deg, #000 20%, #78DEC7 40%, #78DEC7 50%, #D62AD0 55%, #FEC260 70%, #000 100%);
+  background-size: 200% auto;
+  background-color: #000;
+  color: #fff;
+  width: 300px;
+  border: solid 3px #78DEC7;
+  margin-top: 10vh;
+  animation: shine 2s linear infinite;
+}
+
+/*Begin shimmer code*/
+
+@keyframes shine {
+    to {
+      background-position: 200% center;
+    }
+  }
