@@ -24,7 +24,7 @@ code {
   width: 300px;
   border: solid 3px #78DEC7;
   margin-top: 10vh;
-  animation: shine 2s linear infinite;
+  animation: shine 6s linear infinite;
 }
 
 /*Begin shimmer code*/
