@@ -1,6 +1,7 @@
 class TodayworkoutsController < ApplicationController
     def index
-        render json: Todayworkout.all
+        todayworkouts = @user.todayworkouts.all   
+        render json: todayworkouts
     end
 
     def show
@@ -9,8 +10,8 @@ class TodayworkoutsController < ApplicationController
     end
 
     def create
-        workout = Todayworkout.create!(obj_params)
-        render json: workoutout, status: :created 
+        workout = @user.todayworkouts.create!(obj_params)
+        render json: workout, status: :created 
     end
 
     private

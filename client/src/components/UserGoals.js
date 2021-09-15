@@ -84,7 +84,7 @@ function UserGoals({ currentUser }) {
                         <form className={classes.root} onSubmit={onSubmitForm}>
 
                             <TextField
-                                label="name"
+                                label="Target Weight"
                                 variant="outlined" ƒ
                                 required
                                 value={targetWeight}
@@ -101,7 +101,7 @@ function UserGoals({ currentUser }) {
                             </div>
 
                             <TextField
-                                label="Height"
+                                label="Target BMI"
                                 variant="outlined"
                                 required
                                 value={targetBmi}
@@ -117,7 +117,7 @@ function UserGoals({ currentUser }) {
                             </div>
 
                             <TextField
-                                label="Weight"
+                                label="Target Physique"
                                 variant="outlined"
                               
                                 required
