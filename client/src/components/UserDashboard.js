@@ -12,6 +12,7 @@ import TodaysWorkoutContainer from './TodaysWorkoutContainer'
 import AddCircleRoundedIcon from '@material-ui/icons/AddCircleRounded';
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -39,14 +40,14 @@ const useStyles = makeStyles((theme) => ({
         // border: '1px solid #FEC260'
     },
     cover: {
-        backgroundSize: "cover",
+        backgroundSize: "contain",
         backgroundRepeat: "no-repeat",
         height: 300,
         width: '100vw',
     },
 }));
 
-function UserDashboard({ setFavorites, errorMe, currentUser, setCurrentUser, favorites, onDeleteFavorite }) {
+function UserDashboard({ goal, setFavorites, errorMe, currentUser, setCurrentUser, favorites, onDeleteFavorite }) {
     const history = useHistory();
     const classes = useStyles();
     const [currentExercise, setCurrentExercise] = useState(false)
@@ -98,8 +99,12 @@ function UserDashboard({ setFavorites, errorMe, currentUser, setCurrentUser, fav
 
     useEffect(() => {
         fetch(`/users/${id}/todayworkouts`)
-        .then(res => res.json())
-        .then(data => setTodaysWorkouts(data))
+            .then(res => res.json())
+            .then(data => {
+                if (!data.errors) {
+                    setTodaysWorkouts(data)
+                }
+            })
     }, [])
 
     console.log(currentExercise.user_id)
@@ -124,19 +129,20 @@ function UserDashboard({ setFavorites, errorMe, currentUser, setCurrentUser, fav
                     />
                     <div className={classes.details}>
                         <CardContent className={classes.content}>
-                            <Typography component="h3" variant="h3" style={{ marginTop: '4vh' }} >
-                                Welcome back {currentUser.username}
-                                <Box
-                                    // border={1}
-                                    borderRadius="10%"
-                                    overflow="hidden"
-                                    display="flex"
-                                    justifyContent="center"
-                                    alignItems="center"
-                                    height="20vh"
-                                    width="12vw"
-                                    style={{ borderColor: '#FEC260', marginLeft: '5.5vw', marginTop: '2vh' }}
-                                >
+                            {/* <Typography component="h3" variant="h3" style={{ marginTop: '4vh' }} >
+                                Profile */}
+                            <Box
+                                // border={1}
+                                borderRadius="10%"
+                                overflow="hidden"
+                                display="flex"
+                                justifyContent="center"
+                                alignItems="center"
+                                height="20vh"
+                                width="12vw"
+                                style={{ borderColor: '#FEC260', marginLeft: '2vw', marginTop: '6vh' }}
+                            >
+                                {currentUser.profile_image ?
                                     <img
                                         style={{
                                             width: "100%",
@@ -145,10 +151,10 @@ function UserDashboard({ setFavorites, errorMe, currentUser, setCurrentUser, fav
                                         src={currentUser.profile_image}
                                         alt="profile"
 
-                                    />
+                                    /> : <AccountCircleIcon style={{ fontSize: '200px', color: 'white' }} />}
 
-                                </Box>
-                            </Typography>
+                            </Box>
+                            {/* </Typography> */}
                             <Typography variant="subtitle1" color="textSecondary">
                                 Your Stats:
                             </Typography>
@@ -191,6 +197,13 @@ function UserDashboard({ setFavorites, errorMe, currentUser, setCurrentUser, fav
                     {todaysWorkout ? <TodaysWorkoutContainer todaysWorkout={todaysWorkout} /> : null}
                 </Box>
             </Container> */}
+
+            <Typography style={{ marginLeft: '17vw', fontSize: '10rem', textDecoration: 'none', background: 'linear-gradient(90deg, #FEC260 10%, #78DEC7 24% )', webkitBackgroundClip: 'text', webkitTextFillColor: "transparent", marginTop: '10vh' }}>
+                Your Fitness Goal {goal.target_weight}
+            </Typography>
+
+            <h1 style={{color: 'white'}}>{goal.target_weight}</h1>
+            
         </>
     )
 }

@@ -17,6 +17,7 @@ import UserSettings from './components/UserSettings.js'
 import { FavoriteSharp } from '@material-ui/icons';
 import UserGoals from './components/UserGoals.js'
 import { ParallaxProvider } from 'react-scroll-parallax'
+import SideDrawer from './components/SideDrawer'
 
 
 
@@ -25,11 +26,10 @@ function App() {
   const [currentUser, setCurrentUser] = useState(false)
   const [exercises, setExercises] = useState([])
   const [favorites, setFavorites] = useState([])
+  const [goal, setGoal] = useState([])
   const [search, setSearch] = useState("");
   const [state, setState] = useState(false);
   const [errorMe, setErrorMe] = useState(false)
-
-
 
 
   function onLogout() {
@@ -55,6 +55,12 @@ function App() {
   }, [])
 
   let id = currentUser.id
+
+  useEffect(() => {
+    fetch(`/users/${id}/user_goals`)
+    .then(res => res.json())
+    .then(setGoal)
+  }, [])
 
   useEffect(() => {
     fetch(`/users/${id}`)
@@ -140,6 +146,7 @@ function App() {
         <ThemeProvider theme={Theme}>
           <TempDrawer onLogout={onLogout} state={state} toggleDrawer={toggleDrawer} />
           <NavBar search={search} setSearch={setSearch} state={state} toggleDrawer={toggleDrawer} currentUser={currentUser} />
+          <SideDrawer />
           <Switch>
             <Route
               path='/signup'
@@ -169,7 +176,7 @@ function App() {
             <Route
               path='/userdashboard'
               component={() =>
-                <UserDashboard setFavorites={setFavorites} errorMe={errorMe} currentUser={currentUser} favorites={favorites} setCurrentUser={setCurrentUser} onDeleteFavorite={onDeleteFavorite} />}
+                <UserDashboard goal={goal} setFavorites={setFavorites} errorMe={errorMe} currentUser={currentUser} favorites={favorites} setCurrentUser={setCurrentUser} onDeleteFavorite={onDeleteFavorite} />}
             />
             <Route
               path='/checkout'

@@ -50,9 +50,9 @@ function UserGoals({ currentUser }) {
        e.preventDefault();
 
         const newObj = {
-            targetWeight: targetWeight,
-            targetBmi: targetBmi,
-            targetPhysique: targetPhysique,
+            target_weight: targetWeight,
+            target_bmi: targetBmi,
+            target_physique: targetPhysique,
         }
        
         fetch(`/users/${id}/user_goals`, {

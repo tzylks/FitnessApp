@@ -56,9 +56,12 @@ function Dashboard({ currentUser }) {
             </Parallax>
 
 
-            <Parallax y={[-40, 100]} x={[-20, 110]} tagOuter="figure">
+
+           
+            <Parallax y={[-40, 100]} x={[-50, 110]} tagOuter="figure">
                 <img src="https://officialpsds.com/imageview/79/91/7991z0_large.png?1521316586" />
             </Parallax>
+            
 
 
             <Parallax y={[-360, 100]} x={[-20, 200]} tagOuter="figure">

@@ -22,7 +22,7 @@ function FavoriteExercisesContainer({ mouseOverContainer, todaysWorkout, setFavo
             <Typography style={{ marginLeft: '17vw', fontSize: '10rem', textDecoration: 'none', background: 'linear-gradient(90deg, #FEC260 10%, #78DEC7 24% )', webkitBackgroundClip: 'text', webkitTextFillColor: "transparent", marginTop: '5vh' }}>
                 Today's Exercises
             </Typography>
-            <Container onMouseOver={mouseOverContainer} style={{ height: '100vh' }}>
+            <Container onMouseOver={mouseOverContainer} style={{ height: '70vh', overflow: 'visible' }}>
                 <Box>
                     {todaysWorkout ? <TodaysWorkoutContainer mouseOverContainer={mouseOverContainer} todaysWorkout={todaysWorkout} /> : null}
                 </Box>
