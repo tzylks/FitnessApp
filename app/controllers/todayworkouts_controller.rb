@@ -1,6 +1,6 @@
 class TodayworkoutsController < ApplicationController
     def index
-        todayworkouts = @user.todayworkouts.all   
+        todayworkouts = @user.todayworkouts
         render json: todayworkouts
     end
 
