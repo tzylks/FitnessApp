@@ -5,7 +5,7 @@ class TodayworkoutsController < ApplicationController
     end
 
     def show
-        workout = Todayworkout.find(params[:id])
+        workout = @user.todayworkouts.find(params[:id])
         render json: workout
     end
 
