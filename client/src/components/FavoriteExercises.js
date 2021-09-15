@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button'
 import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
 import EditSharpIcon from '@material-ui/icons/EditSharp';
 import Draggable from 'react-draggable'
+import { motion } from 'framer-motion'
 
 import '../index.css'
 
@@ -26,12 +27,11 @@ const useStyles = makeStyles({
         color: "#fff",
         width: "300px",
         border: 'solid 3px #78DEC7',
-        marginTop: "5vh"
-
+        marginTop: "5vh",
     },
 });
 
-function FavoriteExercises({ currentUser, favorites, onDeleteFavorite, setCurrentExercise }) {
+function FavoriteExercises({ mouseOverContainer, currentUser, favorites, onDeleteFavorite, setCurrentExercise }) {
 
     const classes = useStyles();
 
@@ -44,9 +44,11 @@ function FavoriteExercises({ currentUser, favorites, onDeleteFavorite, setCurren
     }
 
     return (
+    
     <Container>
         <Draggable>
-            <Card onClick={onClickFavorite} className={classes.colored} style={{ color: 'white' }}>
+            <Card onClick={onClickFavorite} onDrop={mouseOverContainer} className={classes.colored} style={{ color: 'white' }}
+             >
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}
@@ -82,7 +84,9 @@ function FavoriteExercises({ currentUser, favorites, onDeleteFavorite, setCurren
                 </CardActions>
             </Card>
         </Draggable>
-        </Container>
+    </Container>
+        
+    
     )
 }
 

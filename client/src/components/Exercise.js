@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import Draggable from 'react-draggable'
+import { motion } from 'framer-motion'
 
 
 const useStyles = makeStyles({
@@ -33,6 +34,8 @@ function Exercise({exercise, onFavoriteClick, currentUser}){
     const classes = useStyles();
 
     return(
+    <motion.div  whileHover={{ scale: 1}}
+    whileTap={{ scale: 1 }}>
     <Draggable>
         <Card className={classes.colored}>
                 <CardActionArea>
@@ -65,6 +68,7 @@ function Exercise({exercise, onFavoriteClick, currentUser}){
                 </CardActions>
             </Card>
         </Draggable>
+        </motion.div> 
     )
 }
 

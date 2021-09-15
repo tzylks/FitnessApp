@@ -11,6 +11,7 @@ import { useState, useEffect } from 'react'
 import TodaysWorkoutContainer from './TodaysWorkoutContainer'
 import AddCircleRoundedIcon from '@material-ui/icons/AddCircleRounded';
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -82,13 +83,21 @@ function UserDashboard({ setFavorites, errorMe, currentUser, setCurrentUser, fav
                 },
                 body: JSON.stringify(currentExercise)
             })
+                .then(() => fetchToday())
+    }
+    function fetchToday() {
+
+        fetch(`/todayworkouts/`)
+            .then(res => res.json())
+            .then(data => setTodaysWorkouts(data))
+
     }
 
     useEffect(() => {
         fetch(`/todayworkouts/`)
-            .then(res => res.json())
-            .then(data => setTodaysWorkouts(data))
-    }, [todaysWorkout])
+        .then(res => res.json())
+        .then(data => setTodaysWorkouts(data))
+    }, [])
 
     console.log(currentExercise.user_id)
     console.log(todaysWorkout)
@@ -99,6 +108,8 @@ function UserDashboard({ setFavorites, errorMe, currentUser, setCurrentUser, fav
             <Typography component="h1" variant="h1" style={{ fontFamily: "'Monoton', cursive", textDecoration: 'none', background: 'linear-gradient(160deg, #D62AD0 10%, #78DEC7 24% )', webkitBackgroundClip: 'text', webkitTextFillColor: "transparent", marginTop: '17vh', marginLeft: '14vw' }}>
                 Let's Get Physical
             </Typography>
+
+
             {/* <Grid container> */}
             {/* <Grid item lg={12} sm={12} md={12}> */}
             <Box width='100%'>

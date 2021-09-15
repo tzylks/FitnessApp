@@ -24,7 +24,7 @@ function FavoriteExercisesContainer({ mouseOverContainer, todaysWorkout, setFavo
             </Typography>
             <Container onMouseOver={mouseOverContainer} style={{ height: '100vh' }}>
                 <Box>
-                    {todaysWorkout ? <TodaysWorkoutContainer todaysWorkout={todaysWorkout} /> : null}
+                    {todaysWorkout ? <TodaysWorkoutContainer mouseOverContainer={mouseOverContainer} todaysWorkout={todaysWorkout} /> : null}
                 </Box>
             </Container>
         </Box>

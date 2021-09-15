@@ -10,6 +10,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
+
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
@@ -21,7 +22,7 @@ const useStyles = makeStyles(theme => ({
         '& .MuiTextField-root': {
             margin: theme.spacing(1),
             width: '300px',
-            
+
         },
         '& .MuiButtonBase-root': {
             margin: theme.spacing(2),
@@ -45,8 +46,8 @@ function UserSettings({ currentUser }) {
     const history = useHistory();
     const id = currentUser.id
 
-    function onSubmitForm(e, id){
-       e.preventDefault();
+    function onSubmitForm(e, id) {
+        e.preventDefault();
 
         const newObj = {
             age: age,
@@ -56,7 +57,7 @@ function UserSettings({ currentUser }) {
             location: location,
             profile_image: profileImage
         }
-       
+
         fetch(`/users/${id}`, {
             method: 'PUT',
             headers: {
@@ -65,14 +66,19 @@ function UserSettings({ currentUser }) {
             body: JSON.stringify(newObj)
         })
         history.push('/exercises')
-        
+
     }
+
+    const array = [1, 2, 3, 4, 5]
+
 
     return (
         <>
 
 
             <div>
+
+               
 
                 <Dialog disableBackdropClick='true' open={open} aria-labelledby="form-dialog-title" PaperProps={{
                     style: {
@@ -124,7 +130,7 @@ function UserSettings({ currentUser }) {
                             <TextField
                                 label="Weight"
                                 variant="outlined"
-                              
+
                                 required
                                 value={weight}
                                 onChange={e => setWeight(e.target.value)}
@@ -141,7 +147,7 @@ function UserSettings({ currentUser }) {
                             <TextField
                                 label="Location"
                                 variant="outlined"
-                                
+
                                 required
                                 value={location}
                                 onChange={e => setLocation(e.target.value)}
@@ -174,7 +180,7 @@ function UserSettings({ currentUser }) {
                             <TextField
                                 label="Profile Image"
                                 variant="outlined"
-                                
+
                                 required
                                 value={profileImage}
                                 onChange={e => setProfileImage(e.target.value)}
