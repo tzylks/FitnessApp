@@ -108,8 +108,8 @@ function NavBar({ search, setSearch, state, toggleDrawer, currentUser }) {
             to="/usersettings"
           >
         <Box
-              border={1}
-              borderRadius="10%"
+            
+              borderRadius="70%"
               overflow="hidden"
               display="flex"
               justifyContent="center"

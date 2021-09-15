@@ -15,6 +15,7 @@ import UserDashboard from './components/UserDashboard'
 import Checkout from './components/Checkout.js'
 import UserSettings from './components/UserSettings.js'
 import { FavoriteSharp } from '@material-ui/icons';
+import UserGoals from './components/UserGoals.js'
 
 
 
@@ -59,6 +60,8 @@ function App() {
       .then(res => res.json())
       .then(data => setFavorites(data.user_exercises))
   }, [currentUser])
+
+  
 
   useEffect(() => {
     // auto-login
@@ -176,6 +179,11 @@ function App() {
               path='/usersettings'
               component={() =>
                 <UserSettings currentUser={currentUser} />}
+            />
+             <Route
+              path='/usergoals'
+              component={() =>
+                <UserGoals currentUser={currentUser} />}
             />
 
           </Switch>

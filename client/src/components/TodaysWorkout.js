@@ -31,7 +31,7 @@ const useStyles = makeStyles({
     },
 });
 
-function FavoriteExercises({ currentUser, favorites, onDeleteFavorite, setCurrentExercise }) {
+function Yes({ currentUser, favorites, onDeleteFavorite, setCurrentExercise, todaysWorkout, currentExercise }) {
 
     const classes = useStyles();
 
@@ -50,15 +50,15 @@ function FavoriteExercises({ currentUser, favorites, onDeleteFavorite, setCurren
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}
-                        image={favorites.image}
+                        // image={favorites.image}
                         title="album cover"
                     />
                     <CardContent>
                         <Typography align='center' gutterBottom variant="h4" component="h2" color="secondary">
-                            {favorites.activity}
+                            {todaysWorkout.activity}
                         </Typography>
                         <Typography align='center' gutterBottom variant="h5" component="h2">
-                            {favorites.muscle_group}
+                            {todaysWorkout.muscle_group}
                         </Typography>
                         <Typography align='center' variant="body2" component="p">
                             Reps:
@@ -70,7 +70,7 @@ function FavoriteExercises({ currentUser, favorites, onDeleteFavorite, setCurren
                 </CardActionArea>
                 <CardActions>
                     <Tooltip title="Remove this Exercise" arrow style={{ color: "black" }}>
-                        <DeleteSharpIcon size="small" onClick={() => onDeleteFavorite(favorites.id)} style={{ color: '#FEC260', marginLeft: "auto", marginRight: '10px', fontSize: "40px" }}>
+                        <DeleteSharpIcon size="small" style={{ color: '#FEC260', marginLeft: "auto", marginRight: '10px', fontSize: "40px" }}>
                             Remove From Exercise Plan
                         </DeleteSharpIcon>
                     </Tooltip>
@@ -86,4 +86,4 @@ function FavoriteExercises({ currentUser, favorites, onDeleteFavorite, setCurren
     )
 }
 
-export default FavoriteExercises
+export default Yes

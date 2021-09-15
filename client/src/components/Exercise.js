@@ -24,7 +24,7 @@ const useStyles = makeStyles({
         color: "#fff",
         width: "300px",
         border: 'solid 3px #78DEC7',
-        marginTop: "10vh"
+        marginTop: "3vh"
     },
 });
 

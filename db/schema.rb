@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_13_224040) do
+ActiveRecord::Schema.define(version: 2021_09_14_232234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 2021_09_13_224040) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
+  end
+
+  create_table "todayworkouts", force: :cascade do |t|
+    t.string "activity"
+    t.string "muscle_group"
+    t.string "reps"
+    t.string "sets"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_todayworkouts_on_user_id"
   end
 
   create_table "user_exercises", force: :cascade do |t|
@@ -61,6 +72,7 @@ ActiveRecord::Schema.define(version: 2021_09_13_224040) do
     t.string "profile_image"
   end
 
+  add_foreign_key "todayworkouts", "users"
   add_foreign_key "user_exercises", "exercises"
   add_foreign_key "user_exercises", "users"
   add_foreign_key "user_goals", "users"

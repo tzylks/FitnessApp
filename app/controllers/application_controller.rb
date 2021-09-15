@@ -15,5 +15,6 @@ def authorize
   return render json: { error: ["Not Authorized"]}, status: :unauthorized unless @user 
 end 
 
+
   
 end
