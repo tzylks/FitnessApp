@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     colored: {
         backgroundColor: "#000",
         color: "#fff",
-        width: "300px",
+        width: "25vw",
         border: 'solid 3px #78DEC7',
         marginTop: "5vh",
     },
