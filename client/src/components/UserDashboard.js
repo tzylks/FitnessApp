@@ -85,16 +85,19 @@ function UserDashboard({ setFavorites, errorMe, currentUser, setCurrentUser, fav
             })
                 .then(() => fetchToday())
     }
+
+    let id = currentUser.id
+
     function fetchToday() {
 
-        fetch(`/todayworkouts/`)
+        fetch(`/users/${id}/todayworkouts`)
             .then(res => res.json())
             .then(data => setTodaysWorkouts(data))
 
     }
 
     useEffect(() => {
-        fetch(`/todayworkouts/`)
+        fetch(`/users/${id}/todayworkouts`)
         .then(res => res.json())
         .then(data => setTodaysWorkouts(data))
     }, [])

@@ -16,6 +16,7 @@ import Checkout from './components/Checkout.js'
 import UserSettings from './components/UserSettings.js'
 import { FavoriteSharp } from '@material-ui/icons';
 import UserGoals from './components/UserGoals.js'
+import { ParallaxProvider } from 'react-scroll-parallax'
 
 
 
@@ -134,7 +135,7 @@ function App() {
 
   return (
     <>
-
+    <ParallaxProvider>
       <div>
         <ThemeProvider theme={Theme}>
           <TempDrawer onLogout={onLogout} state={state} toggleDrawer={toggleDrawer} />
@@ -153,7 +154,7 @@ function App() {
             <Route
               path='/dashboard'
               component={() =>
-                <Dashboard />}
+                <Dashboard currentUser={currentUser}/>}
             />
             <Route
               path='/exercises'
@@ -190,6 +191,7 @@ function App() {
           <Footer />
         </ThemeProvider>
       </div>
+      </ParallaxProvider>
     </>
   );
 }
