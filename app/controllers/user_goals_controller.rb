@@ -1,14 +1,29 @@
 class UserGoalsController < ApplicationController
-
-    def create
-        goals = UserGoal.create!(user_goal_params)
-        session[:user_id] = user.id
-        render json: user, status: :created
+    def index
+        render json: @user.user_goals
     end
 
+    def create
+        if params[:user_id]
+            goals = @user.user_goals.create!(user_goal_params)
+            render json: goals, status: :created
+        end
+    end
+
+
+    # if params[:dog_house_id]
+    #     dog_house = DogHouse.find(params[:dog_house_id])
+    #     reviews = dog_house.reviews
+    #   else
+    #     reviews = Review.all
+    #   end
+    #   render json: reviews, include: :dog_house
+
     def update
+        if params[:user_goal_id] && params[user_id]
         goals = @user.update!(user_goal_params)
         render json: goals, status: :accepted
+        end
     end
 
     # def destroy

@@ -11,6 +11,9 @@ import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
 import EditSharpIcon from '@material-ui/icons/EditSharp';
 import Draggable from 'react-draggable'
 import { motion } from 'framer-motion'
+import {useState} from 'react'
+import {IconButton} from '@material-ui/core'
+import {useHistory} from 'react-router-dom'
 
 import '../index.css'
 
@@ -31,17 +34,46 @@ const useStyles = makeStyles({
     },
 });
 
-function FavoriteExercises({ mouseOverContainer, currentUser, favorites, onDeleteFavorite, setCurrentExercise }) {
+function FavoriteExercises({ editThis, setEditThis, mouseOverContainer, currentUser, favorites, onDeleteFavorite, setCurrentExercise }) {
 
+    const history = useHistory();
     const classes = useStyles();
 
     function onClickFavorite(){
         setCurrentExercise({
             activity: favorites.activity,
             muscle_group: favorites.muscle_group,
-            user_id: currentUser.id
+            user_id: currentUser.id,
+            image: favorites.image
         })
     }
+
+    function onClickEdit() {
+        setEditThis({
+            activity: favorites.activity,
+            muscle_group: favorites.muscle_group,
+            id: favorites.id,
+            image: favorites.image
+        })
+        history.push('/setsreps')
+    }
+
+    // const id = favorites.id
+    // function onClickFavorite(){
+
+    //  const newObj = {
+    //      sets: sets,
+    //      reps: reps
+    //  }   
+    //  fetch(`/user_favorites/${id}`, {
+    //      method: 'PATCH',
+    //      headers: {
+    //          'Content-Type': 'application/json'
+    //      },
+    //      body: JSON.stringify()
+    //  })
+    // }
+
 
     return (
     
@@ -63,10 +95,10 @@ function FavoriteExercises({ mouseOverContainer, currentUser, favorites, onDelet
                             {favorites.muscle_group}
                         </Typography>
                         <Typography align='center' variant="body2" component="p">
-                            Reps:
+                            Reps: {favorites.reps}
                         </Typography>
                         <Typography align='center' variant="body2" component="p">
-                            Sets:
+                            Sets: {favorites.sets}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
@@ -77,9 +109,11 @@ function FavoriteExercises({ mouseOverContainer, currentUser, favorites, onDelet
                         </DeleteSharpIcon>
                     </Tooltip>
                     <Tooltip title="Edit this Exercise" arrow style={{ color: "black" }}>
-                        <EditSharpIcon size="small" style={{ color: '#FEC260', marginLeft: '0', marginRight: 'auto', fontSize: "40px" }}>
+                       <IconButton onClick={onClickEdit}>
+                       <EditSharpIcon size="small" style={{ color: '#FEC260', marginLeft: '0', marginRight: 'auto', fontSize: "40px" }}>
                             Update Exercise
                         </EditSharpIcon>
+                        </IconButton>
                     </Tooltip>
                 </CardActions>
             </Card>

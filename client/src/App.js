@@ -18,6 +18,7 @@ import { FavoriteSharp } from '@material-ui/icons';
 import UserGoals from './components/UserGoals.js'
 import { ParallaxProvider } from 'react-scroll-parallax'
 import SideDrawer from './components/SideDrawer'
+import SetsReps from './components/SetsReps'
 
 
 
@@ -26,10 +27,13 @@ function App() {
   const [currentUser, setCurrentUser] = useState(false)
   const [exercises, setExercises] = useState([])
   const [favorites, setFavorites] = useState([])
-  const [goal, setGoal] = useState([])
+  const [goal, setGoal] = useState(false)
   const [search, setSearch] = useState("");
   const [state, setState] = useState(false);
   const [errorMe, setErrorMe] = useState(false)
+  const [sets, setSets] = useState('')
+  const [reps, setReps] = useState('')
+  const [editThis, setEditThis] = useState(false)
 
 
   function onLogout() {
@@ -57,9 +61,11 @@ function App() {
   let id = currentUser.id
 
   useEffect(() => {
-    fetch(`/users/${id}/user_goals`)
+    setGoal([false])
+    let whatever = currentUser.id
+    fetch(`/users/${whatever}/user_goals`)
     .then(res => res.json())
-    .then(setGoal)
+    .then(data => setGoal(data))
   }, [])
 
   useEffect(() => {
@@ -67,7 +73,6 @@ function App() {
       .then(res => res.json())
       .then(data => setFavorites(data.user_exercises))
   }, [currentUser])
-
   
 
   useEffect(() => {
@@ -89,9 +94,6 @@ function App() {
       muscle_group: exercise.muscle_group,
       image: exercise.image
     }
-
-    console.log(exercise.id)
-    console.log(currentUser.id)
 
 
     fetch('/user_exercises', {
@@ -117,27 +119,6 @@ function App() {
     exercise.activity.toLowerCase().includes(search.toLowerCase())
   );
 
-  // useEffect(() => {
-  //   if (favorites) {
-  //     const filteredFavorites = favorites.filter((power, toThe, yellowVests) => yellowVests.map(updateDemocracy => updateDemocracy['activity']).indexOf(power['activity']) === toThe)
-  //     setFavorites(filteredFavorites)
-  //   }
-  //   else {
-  //     return null
-  //   }
-  // }, [favorites])
-
-  // if (favorites) {
-  //   const filteredFavorites = favorites.filter((power, toThe, yellowVests) => yellowVests.map(updateDemocracy => updateDemocracy['activity']).indexOf(power['activity']) === toThe)
-  //   setFavorites(filteredFavorites)
-  // }
-  // else {
-  //   return null
-  // }
-
-  // const filteredFavorites = favorites.filter(filter => filter.errors === true)
-  // console.log(filteredFavorites)
-     
 
   return (
     <>
@@ -156,7 +137,7 @@ function App() {
             <Route
               path='/login'
               component={() =>
-                <Login onLogin={onLogin} currentUser={currentUser} />}
+                <Login onLogin={onLogin} currentUser={currentUser} setGoal={setGoal} />}
             />
             <Route
               path='/dashboard'
@@ -176,7 +157,7 @@ function App() {
             <Route
               path='/userdashboard'
               component={() =>
-                <UserDashboard goal={goal} setFavorites={setFavorites} errorMe={errorMe} currentUser={currentUser} favorites={favorites} setCurrentUser={setCurrentUser} onDeleteFavorite={onDeleteFavorite} />}
+                <UserDashboard setEditThis={setEditThis} editThis={editThis} reps={reps} goal={goal} setFavorites={setFavorites} errorMe={errorMe} currentUser={currentUser} favorites={favorites} setCurrentUser={setCurrentUser} onDeleteFavorite={onDeleteFavorite} />}
             />
             <Route
               path='/checkout'
@@ -191,7 +172,12 @@ function App() {
              <Route
               path='/usergoals'
               component={() =>
-                <UserGoals currentUser={currentUser} />}
+                <UserGoals goal={goal} currentUser={currentUser} setGoal={setGoal} />}
+            />
+             <Route
+              path='/setsreps'
+              component={() =>
+                <SetsReps editThis={editThis} />}
             />
 
           </Switch>

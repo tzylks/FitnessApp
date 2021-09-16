@@ -122,7 +122,9 @@ function NavBar({ search, setSearch, state, toggleDrawer, currentUser }) {
               {currentUser ? <img
                 style={{
                   width: "100%",
-                  height: "auto"
+                  height: "100%",
+                  backgroundSize: 'cover'
+                  
                 }}
                 src={currentUser.profile_image !== null ? currentUser.profile_image : "https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png"}
                 alt="profile"

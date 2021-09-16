@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   resources :todayworkouts
-  resources :user_exercises, only: [:create, :show, :index, :destroy]
+  resources :user_exercises, only: [:create, :show, :index, :destroy, :update]
   resources :exercises
   resources :users, shallow: true do
     resources :user_goals
-    resources :todaysworkouts
+    resources :todayworkouts
   end
   get '/me', to: 'users#show'
   post '/login', to: 'sessions#create'

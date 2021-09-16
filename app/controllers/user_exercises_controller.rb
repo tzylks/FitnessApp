@@ -11,6 +11,12 @@ class UserExercisesController < ApplicationController
         render json: exercise, status: :created
     end
 
+    def update
+        exercise = UserExercise.find_by(id: params[:id])
+        exercise.update!(obj_params)
+        render json: exercise, status: :accepted
+    end
+
     def show
         exercise = UserExercise.find(params[:id])
         render json: exercise
@@ -25,7 +31,7 @@ class UserExercisesController < ApplicationController
     private
 
     def obj_params
-        params.permit(:exercise_id, :user_id, :activity, :muscle_group, :image)
+        params.permit(:exercise_id, :user_id, :activity, :muscle_group, :image, :reps, :sets)
     end
 
 end

@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Login({ onLogin, currentUser }) {
+function Login({ onLogin, currentUser, setGoal }) {
   const classes = useStyles();
   const [username, setUsername] = useState(null)
   const [password, setPassword] = useState(null)

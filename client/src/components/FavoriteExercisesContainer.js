@@ -6,7 +6,7 @@ import Draggable from 'react-draggable'
 import { Typography, Container } from '@material-ui/core';
 import TodaysWorkoutContainer from './TodaysWorkoutContainer';
 
-function FavoriteExercisesContainer({ mouseOverContainer, todaysWorkout, setFavorites, currentUser, favorites, setCurrentUser, onDeleteFavorite, errorMe, setCurrentExercise }) {
+function FavoriteExercisesContainer({ editThis, setEditThis, sets, reps, mouseOverContainer, todaysWorkout, setFavorites, currentUser, favorites, setCurrentUser, onDeleteFavorite, errorMe, setCurrentExercise }) {
 
 
     return (
@@ -15,7 +15,7 @@ function FavoriteExercisesContainer({ mouseOverContainer, todaysWorkout, setFavo
             <Grid container spacing={5} style={{ paddingLeft: "30px", marginTop: '10px', marginBottom: '50px', width: "100vw" }} wrap="nowrap">
                 {errorMe ? null : favorites.map(favorites => {
                     return (<Grid item key={favorites.id} xs={4} md={5} lg={4} style={{ display: "inline-block" }}>
-                        <FavoriteExercises setCurrentExercise={setCurrentExercise} favorites={favorites} currentUser={currentUser} onDeleteFavorite={onDeleteFavorite} />
+                        <FavoriteExercises setEditThis={setEditThis} editThis={editThis} sets={sets} reps={reps} setCurrentExercise={setCurrentExercise} favorites={favorites} currentUser={currentUser} onDeleteFavorite={onDeleteFavorite} />
                     </Grid>)
                 })}
             </Grid>

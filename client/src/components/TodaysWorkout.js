@@ -26,7 +26,7 @@ const useStyles = makeStyles({
         color: "#fff",
         width: "300px",
         border: 'solid 3px #78DEC7',
-        marginTop: "5vh"
+        marginTop: "2vh"
 
     },
 });
@@ -39,9 +39,12 @@ function Yes({ currentUser, favorites, onDeleteFavorite, setCurrentExercise, tod
         setCurrentExercise({
             activity: favorites.activity,
             muscle_group: favorites.muscle_group,
-            user_id: currentUser.id
+            user_id: currentUser.id,
+            image: favorites.image
         })
     }
+
+    console.log(todaysWorkout)
 
     return (
     <Container>
@@ -50,7 +53,7 @@ function Yes({ currentUser, favorites, onDeleteFavorite, setCurrentExercise, tod
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}
-                        // image={favorites.image}
+                        image={todaysWorkout.image}
                         title="album cover"
                     />
                     <CardContent>

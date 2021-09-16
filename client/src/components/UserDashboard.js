@@ -42,38 +42,21 @@ const useStyles = makeStyles((theme) => ({
     cover: {
         backgroundSize: "contain",
         backgroundRepeat: "no-repeat",
-        height: 300,
+        height: 380,
         width: '100vw',
     },
 }));
 
-function UserDashboard({ goal, setFavorites, errorMe, currentUser, setCurrentUser, favorites, onDeleteFavorite }) {
+function UserDashboard({ editThis, setEditThis, sets, reps, goal, setFavorites, errorMe, currentUser, setCurrentUser, favorites, onDeleteFavorite }) {
     const history = useHistory();
     const classes = useStyles();
     const [currentExercise, setCurrentExercise] = useState(false)
     const [todaysWorkout, setTodaysWorkouts] = useState(false)
     const theme = useTheme();
 
-    // setCurrentUser(currentUser)
-
     if (!currentUser) {
         history.push('/login')
     }
-    // else {
-    //     history.push('/userdashboard')
-    // }
-
-    // function onHoverAdd(){
-
-    //     newObj
-    //     fetch('/todayworkouts', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(obj)
-    //     })
-    // }
 
     function mouseOverContainer() {
         if (currentUser)
@@ -84,7 +67,7 @@ function UserDashboard({ goal, setFavorites, errorMe, currentUser, setCurrentUse
                 },
                 body: JSON.stringify(currentExercise)
             })
-                .then(() => fetchToday())
+                // .then(() => fetchToday())
     }
 
     let id = currentUser.id
@@ -107,8 +90,8 @@ function UserDashboard({ goal, setFavorites, errorMe, currentUser, setCurrentUse
             })
     }, [])
 
-    console.log(currentExercise.user_id)
-    console.log(todaysWorkout)
+    let thing = goal[0]
+    console.log(goal)
 
     return (
         <>
@@ -129,24 +112,27 @@ function UserDashboard({ goal, setFavorites, errorMe, currentUser, setCurrentUse
                     />
                     <div className={classes.details}>
                         <CardContent className={classes.content}>
-                            {/* <Typography component="h3" variant="h3" style={{ marginTop: '4vh' }} >
-                                Profile */}
+                            <Box>
+                            <Typography variant="h3" style={{ marginTop: '2vh', display: 'flex', flexDirection: 'column', marginLeft: '7vw' }} >
+                                Profile Image
+                            </Typography>
                             <Box
                                 // border={1}
-                                borderRadius="10%"
+                                borderRadius="70%"
                                 overflow="hidden"
                                 display="flex"
                                 justifyContent="center"
                                 alignItems="center"
-                                height="20vh"
-                                width="12vw"
-                                style={{ borderColor: '#FEC260', marginLeft: '2vw', marginTop: '6vh' }}
+                                height="30vh"
+                                width="18vw"
+                                style={{ borderColor: '#FEC260', marginLeft: '5.5vw', marginTop: '1vh', display: 'flex', flexDrection:'column' }}
                             >
+
                                 {currentUser.profile_image ?
                                     <img
                                         style={{
                                             width: "100%",
-                                            height: "auto",
+                                            height: "100%",
                                         }}
                                         src={currentUser.profile_image}
                                         alt="profile"
@@ -155,10 +141,10 @@ function UserDashboard({ goal, setFavorites, errorMe, currentUser, setCurrentUse
 
                             </Box>
                             {/* </Typography> */}
-                            <Typography variant="subtitle1" color="textSecondary">
-                                Your Stats:
-                            </Typography>
-                            <Typography variant="h4" color="primary" style={{ marginLeft: '4vw', marginTop: '5vh', lineHeight: '50px', wrap: 'no-wrap' }}  >
+                            </Box>
+
+                            <Typography variant="h6" color="primary" style={{ marginLeft: '10vw', marginTop: '1vh', lineHeight: '50px', wrap: 'no-wrap' }}  >
+
                                 Name: {currentUser.name}
                                 <br />
                                 height: {currentUser.height}
@@ -166,6 +152,8 @@ function UserDashboard({ goal, setFavorites, errorMe, currentUser, setCurrentUse
                                 Weight: {currentUser.weight}
                                 <br />
                                 Location: {currentUser.location}
+                                <br />
+                                Target Weight: {goal == false ? null : `Target Weight: ${thing.target_weight}lbs || Target Body Fat: ${thing.target_bmi}%`}
                                 <br />
                                 Add Goals
                                 <Button component={Link} to='/usergoals'>
@@ -178,32 +166,17 @@ function UserDashboard({ goal, setFavorites, errorMe, currentUser, setCurrentUse
 
                 </Card>
             </Box>
-            {/* </Grid>
-            </Grid> */}
+
 
             <Typography style={{ marginLeft: '17vw', fontSize: '10rem', textDecoration: 'none', background: 'linear-gradient(90deg, #FEC260 10%, #78DEC7 24% )', webkitBackgroundClip: 'text', webkitTextFillColor: "transparent", marginTop: '10vh' }}>
                 Your Fitness Plan
             </Typography>
 
-            {/* <h2 style={{ color: "white" }}>Welcome back {currentUser.username}!</h2> */}
-            <FavoriteExercisesContainer currentExercise={currentExercise} todaysWorkout={todaysWorkout} mouseOverContainer={mouseOverContainer} setCurrentExercise={setCurrentExercise} setFavorites={setFavorites} errorMe={errorMe} favorites={favorites} currentUser={currentUser} setCurrentUser={setCurrentUser} onDeleteFavorite={onDeleteFavorite} />
+            <FavoriteExercisesContainer editThis={editThis} setEditThis={setEditThis} sets={sets} reps={reps} currentExercise={currentExercise} todaysWorkout={todaysWorkout} mouseOverContainer={mouseOverContainer} setCurrentExercise={setCurrentExercise} setFavorites={setFavorites} errorMe={errorMe} favorites={favorites} currentUser={currentUser} setCurrentUser={setCurrentUser} onDeleteFavorite={onDeleteFavorite} />
 
-            {/* <Typography style={{ marginLeft: '17vw', fontSize: '10rem', textDecoration: 'none', background: 'linear-gradient(90deg, #FEC260 10%, #78DEC7 24% )', webkitBackgroundClip: 'text', webkitTextFillColor: "transparent", marginTop: '5vh' }}>
-                Today's Exercises
-            </Typography>
 
-            <Container onMouseOver={mouseOverContainer} style={{ height: '100vh' }}>
-                <Box>
-                    {todaysWorkout ? <TodaysWorkoutContainer todaysWorkout={todaysWorkout} /> : null}
-                </Box>
-            </Container> */}
 
-            <Typography style={{ marginLeft: '17vw', fontSize: '10rem', textDecoration: 'none', background: 'linear-gradient(90deg, #FEC260 10%, #78DEC7 24% )', webkitBackgroundClip: 'text', webkitTextFillColor: "transparent", marginTop: '10vh' }}>
-                Your Fitness Goal {goal.target_weight}
-            </Typography>
 
-            <h1 style={{color: 'white'}}>{goal.target_weight}</h1>
-            
         </>
     )
 }

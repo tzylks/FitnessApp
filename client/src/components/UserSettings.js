@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
         },
         '& .MuiButtonBase-root': {
             margin: theme.spacing(2),
-            marginRight: '15vw',
+            marginLeft: '0vw',
             display: 'flex'
         },
     },
@@ -78,7 +78,7 @@ function UserSettings({ currentUser }) {
 
             <div>
 
-               
+
 
                 <Dialog disableBackdropClick='true' open={open} aria-labelledby="form-dialog-title" PaperProps={{
                     style: {
@@ -87,11 +87,11 @@ function UserSettings({ currentUser }) {
                         width: '100vw'
                     },
                 }} style={{ background: 'linear-gradient(329deg, #D62AD0 25%, #78DEC7 24% )' }}>
-                    <DialogTitle id="form-dialog-title" style={{ color: 'white', marginLeft: '30vw' }}>User Settings</DialogTitle>
+
                     <DialogContent>
-                        {/* <DialogContentText style={{ marginLeft: '26vw', color: '#FEC260' }}>
-                Login or signup below!
-              </DialogContentText> */}
+                        <Typography variant='h3' color="primary" style={{marginLeft: '11vw', marginTop: '2vh'}}>
+                            User Settings
+                        </Typography>
                         <form className={classes.root} onSubmit={onSubmitForm}>
 
                             <TextField
@@ -105,11 +105,7 @@ function UserSettings({ currentUser }) {
 
 
                             />
-                            <div>
-                                <Button type="submit" variant="contained" color="primary">
-                                    Update Name
-                                </Button>
-                            </div>
+
 
                             <TextField
                                 label="Height"
@@ -121,11 +117,6 @@ function UserSettings({ currentUser }) {
                                 style={{ background: '#FEC260' }}
                             />
 
-                            <div>
-                                <Button type="submit" variant="contained" color="primary">
-                                    Update Height
-                                </Button>
-                            </div>
 
                             <TextField
                                 label="Weight"
@@ -138,11 +129,7 @@ function UserSettings({ currentUser }) {
                                 style={{ background: '#FEC260' }}
                             />
 
-                            <div>
-                                <Button type="submit" variant="contained" color="primary">
-                                    Update Weight
-                                </Button>
-                            </div>
+
 
                             <TextField
                                 label="Location"
@@ -155,11 +142,7 @@ function UserSettings({ currentUser }) {
                                 style={{ background: '#FEC260' }}
                             />
 
-                            <div>
-                                <Button type="submit" variant="contained" color="primary">
-                                    Update Location
-                                </Button>
-                            </div>
+
 
                             <TextField
                                 label="Age"
@@ -171,11 +154,6 @@ function UserSettings({ currentUser }) {
                                 style={{ background: '#FEC260' }}
                             />
 
-                            <div>
-                                <Button type="submit" variant="contained" color="primary">
-                                    Update Age
-                                </Button>
-                            </div>
 
                             <TextField
                                 label="Profile Image"
@@ -190,7 +168,7 @@ function UserSettings({ currentUser }) {
 
                             <div>
                                 <Button type="submit" variant="contained" color="primary">
-                                    Profile Image
+                                    Submit
                                 </Button>
                             </div>
 

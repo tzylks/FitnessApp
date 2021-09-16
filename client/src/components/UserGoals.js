@@ -31,17 +31,15 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function UserGoals({ currentUser }) {
+function UserGoals({ currentUser, setGoal }) {
 
     const classes = useStyles();
     const [open, setOpen] = useState(true)
     const [targetWeight, setTargetWeight] = useState(null)
     const [targetBmi, setTargetBmi] = useState(null)
     const [targetPhysique, setTargetPhysique] = useState(null)
-    // const [location, setLocation] = useState(null)
-    // const [age, setAge] = useState(null)
-    // const [profileImage, setProfileImage] = useState(null)
-    // const [open, setOpen] = useState(true);
+    
+    setGoal(false)
 
     const history = useHistory();
     const id = currentUser.id
@@ -62,8 +60,10 @@ function UserGoals({ currentUser }) {
             },
             body: JSON.stringify(newObj)
         })
+        .then(res => res.json())
+        .then(data => setGoal([data]))
+        console.log(newObj)
         history.push('/userdashboard')
-        
     }
 
     return (
@@ -94,11 +94,7 @@ function UserGoals({ currentUser }) {
 
 
                             />
-                            <div>
-                                <Button type="submit" variant="contained" color="primary">
-                                    Set Weight
-                                </Button>
-                            </div>
+        
 
                             <TextField
                                 label="Target BMI"
@@ -110,11 +106,7 @@ function UserGoals({ currentUser }) {
                                 style={{ background: '#FEC260' }}
                             />
 
-                            <div>
-                                <Button type="submit" variant="contained" color="primary">
-                                    Release that Fat!!!
-                                </Button>
-                            </div>
+                           
 
                             <TextField
                                 label="Target Physique"
