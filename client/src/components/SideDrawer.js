@@ -79,15 +79,11 @@ function SideDrawer({ onLogout, state, toggleDrawer }) {
 
   return (
     <>
-      <div style={{ display: 'flex' }}>
-        <div onClick={() => window.open('tel:7192662837', "_system")} style={{ borderRadius: '20%', position: 'fixed', color: 'yellow', marginLeft: '96vw', marginBototm: '10vh', background: 'rgba(0,0,0,.5)', zIndex: '1', marginTop: '10vh', flexDirection: 'column' }}>
+      <div style={{ display: 'flex', height: '20vh' }}>
+        <div  style={{ borderRadius: '20%', position: 'fixed', color: 'yellow', marginLeft: '96vw', marginBototm: '10vh', background: 'rgba(0,0,0,.5)', zIndex: '1', marginTop: '10vh', flexDirection: 'column' }}>
 
-          <PhoneEnabledIcon style={{ fontSize: '50px' }} />
-
-        </div>
-
-        <div onClick={() => window.open('tel:7192662837', "_system")} style={{ borderRadius: '20%', position: 'fixed', color: 'yellow', marginLeft: '96vw', marginBototm: '20vh', background: 'rgba(0,0,0,.5)', zIndex: '1', marginTop: '10vh', flexDirection: 'column' }}>
-          <AttachMoneyIcon style={{ fontSize: '50px', color: '#78DEC7' }} />
+          <PhoneEnabledIcon onClick={() => window.open('tel:7192662837', "_system")} style={{ fontSize: '50px' }} />
+          <AttachMoneyIcon onClick={() => {window.location.href = "https://www.venmo.com/u/Trevor-zylks";}} style={{ fontSize: '50px', color: '#78DEC7' }} />
         </div>
 
       </div>

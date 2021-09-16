@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
         flex: '1 0 auto',
         fontSize: '40px',
         color: "white",
-        marginLeft: '1vw',
+        marginLeft: '-30vw',
         marginRight: '5vw',
         width: '50vw',
         flexDirection: 'row',
@@ -42,8 +42,9 @@ const useStyles = makeStyles((theme) => ({
     cover: {
         backgroundSize: "contain",
         backgroundRepeat: "no-repeat",
-        height: 380,
-        width: '100vw',
+        height: 250,
+        width: '30vw',
+        zIndex: "1",
     },
 }));
 
@@ -107,11 +108,39 @@ function UserDashboard({ editThis, setEditThis, sets, reps, goal, setFavorites, 
                 {/* <Grid item lg={12} sm={12} md={12}> */}
                 <Box width='100%'>
                     <Card className={classes.root}>
-                        <CardMedia
-                            className={classes.cover}
-                            image="https://cdn.wazimo.com/engine/static/articles/fitness-eighties/images/190327_140724_39.jpg"
-                            title="Fitness Banner"
-                        />
+                        <CardContent className={classes.cover}>
+                            <motion.div
+                                style={{
+                                    zIndex: "1",
+                                    borderRadius: "70%",
+                                    height: "30vh",
+                                    width: "30vh",
+                                    marginBottom: '30vh',
+                                    border: '100px solid black',
+                                    background: "radial-gradient(circle at 65% 15%, white 1px, #D62AD0 3%, purple 60%, #D62AD0 100%)"
+                                }}
+                                
+                                animate={{ x: [0, 100, 100, -100, 0], y: [0, -100, 0, 100], rotate: 1000 }}
+                                transition={{ duration: 10, loop: Infinity, ease: "linear" }} />
+
+                            <motion.div
+                                style={{
+                                   
+                                    borderRadius: "70%",
+                                    height: "30vh",
+                                    width: "30vh",
+                                    marginBottom: '30vh',
+                                 
+                                    background: "radial-gradient(circle at 65% 15%, white 1px, #78DEC7 3%, royalblue 60%, #78DEC7 100%)"
+                                }}
+                                animate={{ x: [0, 300, 100, -100, 0], y: [0, -900, 0, 100], rotate: 1000 }}
+                                transition={{ duration: 10, loop: Infinity, ease: "linear" }}
+                            />
+                        </CardContent>
+                        //     className={classes.cover}
+                        //     image="https://cdn.wazimo.com/engine/static/articles/fitness-eighties/images/190327_140724_39.jpg"
+                        //     title="Fitness Banner"
+                        // />
                         <div className={classes.details}>
                             <CardContent className={classes.content}>
                                 <Box>
@@ -158,7 +187,7 @@ function UserDashboard({ editThis, setEditThis, sets, reps, goal, setFavorites, 
                                     <br />
                                     {goal == false ? null : `Target Weight: ${thing.target_weight}lbs`}
                                     <br />
-                                    {goal == false ? null: `Target Body Fat: ${thing.target_bmi}%`}
+                                    {goal == false ? null : `Target Body Fat: ${thing.target_bmi}%`}
                                     <br />
                                     Add Goals
                                     <Button component={Link} to='/usergoals'>
