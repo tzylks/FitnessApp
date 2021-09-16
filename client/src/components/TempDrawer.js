@@ -86,11 +86,13 @@ function TempDrawer({onLogout, state, toggleDrawer}) {
           <Divider />
           <CustomListItem to="/userdashboard" primary="User Dashboard" />
           <Divider />
-          <Divider />
+          
          
 
         </List>
-        <Button component={NavLink} to='/login' onClick={onHandleLogout} style={{justifyContent: 'left', }}>Logout</Button>
+        <Divider style={{marginTop: '48.3vh'}} />
+        <Button component={NavLink} to='/login' onClick={onHandleLogout} style={{marginTop: '1.8vh', justifyContent: 'left', fontSize: '32px', marginLeft: '5vw' }}>Logout</Button>
+        <Divider />
       </Drawer>
     </div>
   )

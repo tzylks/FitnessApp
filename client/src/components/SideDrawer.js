@@ -15,26 +15,27 @@ import MenuOpenIcon from '@material-ui/icons/MenuOpen';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PhoneIcon from '@material-ui/icons/Phone';
 import PhoneEnabledIcon from '@material-ui/icons/PhoneEnabled';
-import {IconButton} from '@material-ui/core'
+import { IconButton } from '@material-ui/core'
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 
 const useStyles = makeStyles({
   root: {
     width: 500,
-    
+
   },
   list: {
     width: 30,
-   
+
   },
   fullList: {
     width: 'auto',
-    
+
   },
   paper: {
-    background:  "rgba(0, 0, 0, 0.5)",
+    background: "rgba(0, 0, 0, 0.5)",
     flexShrink: 0,
-    height: 'calc(100% - 790px)', 
-    top:100,
+    height: 'calc(100% - 790px)',
+    top: 100,
     borderTopLeftRadius: '10%',
     borderBottomLeftRadius: '10%'
   },
@@ -44,10 +45,10 @@ const useStyles = makeStyles({
     fontSize: '50px'
   }
 
-  
+
 });
 
-function SideDrawer({onLogout, state, toggleDrawer}) {
+function SideDrawer({ onLogout, state, toggleDrawer }) {
   const classes = useStyles();
   // const [state, setState] = useState(false);
 
@@ -57,31 +58,40 @@ function SideDrawer({onLogout, state, toggleDrawer}) {
 
 
   let CustomListItem = ({ to, primary }) => (
-    
-      <ListItem
-        button
-        component={NavLink}
-        to={to}
-      >
-        <ListItemText primary={primary} />
-      </ListItem>
-    
+
+    <ListItem
+      button
+      component={NavLink}
+      to={to}
+    >
+      <ListItemText primary={primary} />
+    </ListItem>
+
 
   )
 
-  function onHandleLogout(){
+  function onHandleLogout() {
     fetch('/logout', {
       method: 'DELETE',
     })
-    .then(() => onLogout())
-    }
+      .then(() => onLogout())
+  }
 
   return (
-    <div onClick={() => window.open('tel:7192662837', "_system")} style={{ borderRadius: '20%', position: 'fixed', color: 'yellow', marginLeft: '96vw', marginBototm: '10vh', background: 'rgba(0,0,0,.5)', zIndex: '1', marginTop: '10vh' }}>
-       
-        <PhoneEnabledIcon style={{fontSize: '50px'}} />
-   
-    </div>
+    <>
+      <div style={{ display: 'flex' }}>
+        <div onClick={() => window.open('tel:7192662837', "_system")} style={{ borderRadius: '20%', position: 'fixed', color: 'yellow', marginLeft: '96vw', marginBototm: '10vh', background: 'rgba(0,0,0,.5)', zIndex: '1', marginTop: '10vh', flexDirection: 'column' }}>
+
+          <PhoneEnabledIcon style={{ fontSize: '50px' }} />
+
+        </div>
+
+        <div onClick={() => window.open('tel:7192662837', "_system")} style={{ borderRadius: '20%', position: 'fixed', color: 'yellow', marginLeft: '96vw', marginBototm: '20vh', background: 'rgba(0,0,0,.5)', zIndex: '1', marginTop: '10vh', flexDirection: 'column' }}>
+          <AttachMoneyIcon style={{ fontSize: '50px', color: '#78DEC7' }} />
+        </div>
+
+      </div>
+    </>
   )
 }
 

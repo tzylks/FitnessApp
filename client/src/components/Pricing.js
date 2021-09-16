@@ -66,7 +66,7 @@ const tiers = [
   {
     title: 'Pro',
     subheader: 'Most popular',
-    price: '15',
+    price: '10k',
     description: [
       '20 users included',
       'Add Exercise Plans',
@@ -79,7 +79,7 @@ const tiers = [
   },
   {
     title: 'Enterprise',
-    price: '10k',
+    price: '500k',
     description: [
       '1 users included',
       'We Overcharge People with Money',

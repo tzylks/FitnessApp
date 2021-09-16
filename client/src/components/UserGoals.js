@@ -97,7 +97,7 @@ function UserGoals({ currentUser, setGoal }) {
         
 
                             <TextField
-                                label="Target BMI"
+                                label="Target Body Fat"
                                 variant="outlined"
                                 required
                                 value={targetBmi}
@@ -107,17 +107,6 @@ function UserGoals({ currentUser, setGoal }) {
                             />
 
                            
-
-                            <TextField
-                                label="Target Physique"
-                                variant="outlined"
-                              
-                                required
-                                value={targetPhysique}
-                                onChange={e => setTargetPhysique(e.target.value)}
-                                color="primary"
-                                style={{ background: '#FEC260' }}
-                            />
 
                             <div>
                                 <Button type="submit" variant="contained" color="primary">

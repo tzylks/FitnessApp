@@ -156,7 +156,9 @@ function UserDashboard({ editThis, setEditThis, sets, reps, goal, setFavorites, 
                                     <br />
                                     Location: {currentUser.location}
                                     <br />
-                                    {goal == false ? null : `Target Weight: ${thing.target_weight}lbs || Target Body Fat: ${thing.target_bmi}%`}
+                                    {goal == false ? null : `Target Weight: ${thing.target_weight}lbs`}
+                                    <br />
+                                    {goal == false ? null: `Target Body Fat: ${thing.target_bmi}%`}
                                     <br />
                                     Add Goals
                                     <Button component={Link} to='/usergoals'>

@@ -76,11 +76,7 @@ function FavoriteExercises({ editThis, setEditThis, mouseOverContainer, currentU
     // }
 
 
-    const variants = {
-        visible: { opacity: 1 },
-        hidden: { opacity: 0 },
-        transition: { duration: 5 }
-    }
+    
 
     return (
 
@@ -99,7 +95,7 @@ function FavoriteExercises({ editThis, setEditThis, mouseOverContainer, currentU
                             <CardMedia
                                 className={classes.media}
                                 image={favorites.image}
-                                title="album cover"
+                                title="Exercise Image"
                             />
                             <CardContent>
                                 <Typography align='left' gutterBottom variant="h3" component="h2" color="secondary">

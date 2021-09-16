@@ -60,7 +60,7 @@ function Exercise({exercise, onFavoriteClick, currentUser}){
                     <CardMedia
                         className={classes.media}
                         image={exercise.image}
-                        title="album cover"
+                        title="Exercise Image"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h4" component="h2" color="secondary">

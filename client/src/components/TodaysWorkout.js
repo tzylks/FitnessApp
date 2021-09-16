@@ -54,7 +54,7 @@ function Yes({ currentUser, favorites, onDeleteFavorite, setCurrentExercise, tod
                     <CardMedia
                         className={classes.media}
                         image={todaysWorkout.image}
-                        title="album cover"
+                        title="Exercise Image"
                     />
                     <CardContent>
                         <Typography align='center' gutterBottom variant="h4" component="h2" color="secondary">
