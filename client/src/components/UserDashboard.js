@@ -67,7 +67,7 @@ function UserDashboard({ editThis, setEditThis, sets, reps, goal, setFavorites, 
                 },
                 body: JSON.stringify(currentExercise)
             })
-                // .then(() => fetchToday())
+        // .then(() => fetchToday())
     }
 
     let id = currentUser.id
@@ -95,86 +95,89 @@ function UserDashboard({ editThis, setEditThis, sets, reps, goal, setFavorites, 
 
     return (
         <>
-
-            <Typography component="h1" variant="h1" style={{ fontFamily: "'Monoton', cursive", textDecoration: 'none', background: 'linear-gradient(160deg, #D62AD0 10%, #78DEC7 24% )', webkitBackgroundClip: 'text', webkitTextFillColor: "transparent", marginTop: '17vh', marginLeft: '14vw' }}>
-                Let's Get Physical
-            </Typography>
-
-
-            {/* <Grid container> */}
-            {/* <Grid item lg={12} sm={12} md={12}> */}
-            <Box width='100%'>
-                <Card className={classes.root}>
-                    <CardMedia
-                        className={classes.cover}
-                        image="https://cdn.wazimo.com/engine/static/articles/fitness-eighties/images/190327_140724_39.jpg"
-                        title="Fitness Banner"
-                    />
-                    <div className={classes.details}>
-                        <CardContent className={classes.content}>
-                            <Box>
-                            <Typography variant="h3" style={{ marginTop: '2vh', display: 'flex', flexDirection: 'column', marginLeft: '7vw' }} >
-                                Profile Image
-                            </Typography>
-                            <Box
-                                // border={1}
-                                borderRadius="70%"
-                                overflow="hidden"
-                                display="flex"
-                                justifyContent="center"
-                                alignItems="center"
-                                height="30vh"
-                                width="18vw"
-                                style={{ borderColor: '#FEC260', marginLeft: '5.5vw', marginTop: '1vh', display: 'flex', flexDrection:'column' }}
-                            >
-
-                                {currentUser.profile_image ?
-                                    <img
-                                        style={{
-                                            width: "100%",
-                                            height: "100%",
-                                        }}
-                                        src={currentUser.profile_image}
-                                        alt="profile"
-
-                                    /> : <AccountCircleIcon style={{ fontSize: '200px', color: 'white' }} />}
-
-                            </Box>
-                            {/* </Typography> */}
-                            </Box>
-
-                            <Typography variant="h6" color="primary" style={{ marginLeft: '10vw', marginTop: '1vh', lineHeight: '50px', wrap: 'no-wrap' }}  >
-
-                                Name: {currentUser.name}
-                                <br />
-                                height: {currentUser.height}
-                                <br />
-                                Weight: {currentUser.weight}
-                                <br />
-                                Location: {currentUser.location}
-                                <br />
-                                Target Weight: {goal == false ? null : `Target Weight: ${thing.target_weight}lbs || Target Body Fat: ${thing.target_bmi}%`}
-                                <br />
-                                Add Goals
-                                <Button component={Link} to='/usergoals'>
-                                    <AddCircleRoundedIcon style={{ marginLeft: '10px', fontSize: '30px', color: '#FEC260' }}></AddCircleRoundedIcon>
-                                </Button>
-                            </Typography>
-
-                        </CardContent>
-                    </div>
-
-                </Card>
-            </Box>
+            <motion.div
+                animate={{ opacity: 1 }}
+                transition={{ from: 0, duration: 1 }}>
+                <Typography component="h1" variant="h1" style={{ fontFamily: "'Monoton', cursive", textDecoration: 'none', background: 'linear-gradient(160deg, #D62AD0 10%, #78DEC7 24% )', webkitBackgroundClip: 'text', webkitTextFillColor: "transparent", marginTop: '17vh', marginLeft: '14vw' }}>
+                    Let's Get Physical
+                </Typography>
 
 
-            <Typography style={{ marginLeft: '17vw', fontSize: '10rem', textDecoration: 'none', background: 'linear-gradient(90deg, #FEC260 10%, #78DEC7 24% )', webkitBackgroundClip: 'text', webkitTextFillColor: "transparent", marginTop: '10vh' }}>
-                Your Fitness Plan
-            </Typography>
+                {/* <Grid container> */}
+                {/* <Grid item lg={12} sm={12} md={12}> */}
+                <Box width='100%'>
+                    <Card className={classes.root}>
+                        <CardMedia
+                            className={classes.cover}
+                            image="https://cdn.wazimo.com/engine/static/articles/fitness-eighties/images/190327_140724_39.jpg"
+                            title="Fitness Banner"
+                        />
+                        <div className={classes.details}>
+                            <CardContent className={classes.content}>
+                                <Box>
+                                    <Typography variant="h3" style={{ marginTop: '2vh', display: 'flex', flexDirection: 'column', marginLeft: '7vw' }} >
+                                        Profile Image
+                                    </Typography>
+                                    <Box
+                                        // border={1}
+                                        border={3}
+                                        borderRadius="70%"
+                                        overflow="hidden"
+                                        display="flex"
+                                        justifyContent="center"
+                                        alignItems="center"
+                                        height="30vh"
+                                        width="18vw"
+                                        style={{ borderColor: 'white', marginLeft: '5.5vw', marginTop: '1vh', display: 'flex', flexDrection: 'column' }}
+                                    >
 
-            <FavoriteExercisesContainer editThis={editThis} setEditThis={setEditThis} sets={sets} reps={reps} currentExercise={currentExercise} todaysWorkout={todaysWorkout} mouseOverContainer={mouseOverContainer} setCurrentExercise={setCurrentExercise} setFavorites={setFavorites} errorMe={errorMe} favorites={favorites} currentUser={currentUser} setCurrentUser={setCurrentUser} onDeleteFavorite={onDeleteFavorite} />
+                                        {currentUser.profile_image ?
+                                            <img
+                                                style={{
+                                                    width: "100%",
+                                                    height: "auto",
+                                                }}
+                                                src={currentUser.profile_image}
+                                                alt="profile"
+
+                                            /> : <AccountCircleIcon style={{ fontSize: '200px', color: 'white' }} />}
+
+                                    </Box>
+                                    {/* </Typography> */}
+                                </Box>
+
+                                <Typography variant="h6" color="primary" style={{ marginLeft: '10vw', marginTop: '1vh', lineHeight: '50px', wrap: 'no-wrap' }}  >
+
+                                    Name: {currentUser.name}
+                                    <br />
+                                    height: {currentUser.height}
+                                    <br />
+                                    Weight: {currentUser.weight}
+                                    <br />
+                                    Location: {currentUser.location}
+                                    <br />
+                                    {goal == false ? null : `Target Weight: ${thing.target_weight}lbs || Target Body Fat: ${thing.target_bmi}%`}
+                                    <br />
+                                    Add Goals
+                                    <Button component={Link} to='/usergoals'>
+                                        <AddCircleRoundedIcon style={{ marginLeft: '10px', fontSize: '30px', color: '#FEC260' }}></AddCircleRoundedIcon>
+                                    </Button>
+                                </Typography>
+
+                            </CardContent>
+                        </div>
+
+                    </Card>
+                </Box>
 
 
+                <Typography style={{ marginLeft: '17vw', fontSize: '10rem', textDecoration: 'none', background: 'linear-gradient(90deg, #FEC260 10%, #78DEC7 24% )', webkitBackgroundClip: 'text', webkitTextFillColor: "transparent", marginTop: '10vh' }}>
+                    Your Fitness Plan
+                </Typography>
+
+                <FavoriteExercisesContainer editThis={editThis} setEditThis={setEditThis} sets={sets} reps={reps} currentExercise={currentExercise} todaysWorkout={todaysWorkout} mouseOverContainer={mouseOverContainer} setCurrentExercise={setCurrentExercise} setFavorites={setFavorites} errorMe={errorMe} favorites={favorites} currentUser={currentUser} setCurrentUser={setCurrentUser} onDeleteFavorite={onDeleteFavorite} />
+
+            </motion.div>
 
 
         </>

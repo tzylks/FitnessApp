@@ -11,9 +11,10 @@ import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
 import EditSharpIcon from '@material-ui/icons/EditSharp';
 import Draggable from 'react-draggable'
 import { motion } from 'framer-motion'
-import {useState} from 'react'
-import {IconButton} from '@material-ui/core'
-import {useHistory} from 'react-router-dom'
+import { useState } from 'react'
+import { IconButton } from '@material-ui/core'
+import { useHistory } from 'react-router-dom'
+
 
 import '../index.css'
 
@@ -39,7 +40,7 @@ function FavoriteExercises({ editThis, setEditThis, mouseOverContainer, currentU
     const history = useHistory();
     const classes = useStyles();
 
-    function onClickFavorite(){
+    function onClickFavorite() {
         setCurrentExercise({
             activity: favorites.activity,
             muscle_group: favorites.muscle_group,
@@ -75,52 +76,67 @@ function FavoriteExercises({ editThis, setEditThis, mouseOverContainer, currentU
     // }
 
 
+    const variants = {
+        visible: { opacity: 1 },
+        hidden: { opacity: 0 },
+        transition: { duration: 5 }
+    }
+
     return (
-    
-    <Container>
-        <Draggable>
-            <Card onClick={onClickFavorite} onDrop={mouseOverContainer} className={classes.colored} style={{ color: 'white' }}
-             >
-                <CardActionArea>
-                    <CardMedia
-                        className={classes.media}
-                        image={favorites.image}
-                        title="album cover"
-                    />
-                    <CardContent>
-                        <Typography align='center' gutterBottom variant="h4" component="h2" color="secondary">
-                            {favorites.activity}
-                        </Typography>
-                        <Typography align='center' gutterBottom variant="h5" component="h2">
-                            {favorites.muscle_group}
-                        </Typography>
-                        <Typography align='center' variant="body2" component="p">
-                            Reps: {favorites.reps}
-                        </Typography>
-                        <Typography align='center' variant="body2" component="p">
-                            Sets: {favorites.sets}
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-                <CardActions>
-                    <Tooltip title="Remove this Exercise" arrow style={{ color: "black" }}>
-                        <DeleteSharpIcon size="small" onClick={() => onDeleteFavorite(favorites.id)} style={{ color: '#FEC260', marginLeft: "auto", marginRight: '10px', fontSize: "40px" }}>
-                            Remove From Exercise Plan
-                        </DeleteSharpIcon>
-                    </Tooltip>
-                    <Tooltip title="Edit this Exercise" arrow style={{ color: "black" }}>
-                       <IconButton onClick={onClickEdit}>
-                       <EditSharpIcon size="small" style={{ color: '#FEC260', marginLeft: '0', marginRight: 'auto', fontSize: "40px" }}>
-                            Update Exercise
-                        </EditSharpIcon>
-                        </IconButton>
-                    </Tooltip>
-                </CardActions>
-            </Card>
-        </Draggable>
-    </Container>
-        
-    
+
+
+
+        <Container>
+
+            <Draggable
+            >
+                <motion.div
+                    animate={{ opacity: 1 }}
+                    transition={{ from: 0, duration: 3 }}>
+                    <Card onClick={onClickFavorite} onDrop={mouseOverContainer} className={classes.colored} style={{ color: 'white' }}
+                    >
+                        <CardActionArea>
+                            <CardMedia
+                                className={classes.media}
+                                image={favorites.image}
+                                title="album cover"
+                            />
+                            <CardContent>
+                                <Typography align='left' gutterBottom variant="h3" component="h2" color="secondary">
+                                    {favorites.activity}
+                                </Typography>
+                                <Typography align='left' gutterBottom variant="h5" component="h2" color="primary">
+                                    {favorites.muscle_group}
+                                </Typography>
+                                <Typography align='left' variant="h5" component="p">
+                                    Reps: {favorites.reps}
+                                </Typography>
+                                <Typography align='left' variant="h5" component="p">
+                                    Sets: {favorites.sets}
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        <CardActions>
+                            <Tooltip title="Remove this Exercise" arrow style={{ color: "black" }}>
+                                <DeleteSharpIcon size="small" onClick={() => onDeleteFavorite(favorites.id)} style={{ color: '#FEC260', marginLeft: "0", marginRight: '10px', fontSize: "40px" }}>
+                                    Remove From Exercise Plan
+                                </DeleteSharpIcon>
+                            </Tooltip>
+                            <Tooltip title="Edit this Exercise" arrow style={{ color: "black" }}>
+                                <IconButton onClick={onClickEdit}>
+                                    <EditSharpIcon size="small" style={{ color: '#FEC260', marginLeft: '0', marginRight: 'auto', fontSize: "40px" }}>
+                                        Update Exercise
+                                    </EditSharpIcon>
+                                </IconButton>
+                            </Tooltip>
+                        </CardActions>
+                    </Card>
+                </motion.div>
+            </Draggable>
+        </Container >
+
+
+
     )
 }
 

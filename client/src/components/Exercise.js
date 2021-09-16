@@ -10,9 +10,14 @@ import Button from '@material-ui/core/Button'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import Draggable from 'react-draggable'
 import { motion } from 'framer-motion'
+import {useState} from 'react'
+import {Box} from '@material-ui/core'
+import '../index.css';
 
 
-const useStyles = makeStyles({
+
+
+const useStyles = makeStyles(theme => ({
     root: {
         maxWidth: 100,
         
@@ -25,17 +30,30 @@ const useStyles = makeStyles({
         color: "#fff",
         width: "300px",
         border: 'solid 3px #78DEC7',
-        marginTop: "3vh"
+        marginTop: "3vh",
     },
-});
+}));
+
+
+
+
 
 function Exercise({exercise, onFavoriteClick, currentUser}){
-
+    const [colors, setColor] = useState(false)
+    const [bounceMe, setBounceMe] = useState(false)
     const classes = useStyles();
 
+    function onHoverChange() {
+        setColor(!colors)
+    }
+
+    function onClickBounce() {
+        setBounceMe(!bounceMe)
+    }
+
     return(
-    <motion.div  whileHover={{ scale: 1}}
-    whileTap={{ scale: 1 }}>
+    <motion.div  whileHover={{ scale: .9}}
+    whileTap={{ scale: .94 }}>
     <Draggable>
         <Card className={classes.colored}>
                 <CardActionArea>
@@ -60,11 +78,13 @@ function Exercise({exercise, onFavoriteClick, currentUser}){
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                <Tooltip title="Add this item to Exercise Plan" arrow style={{color: "black"}}>
-                    <AddCircleIcon onClick={() => onFavoriteClick(exercise, currentUser)} size="small" style={{ color: '#FEC260' }}>
+                <Box onMouseOver={onHoverChange} style={{width: '50px'}}>
+                <Tooltip title="Add this item to Exercise Plan"  placement="right">
+                    <AddCircleIcon className="square" onClick={() => onFavoriteClick(exercise, currentUser)} size="small" color="primary" >
                         Add to Exercise Plan
                     </AddCircleIcon>
                 </Tooltip>
+                </Box>
                 </CardActions>
             </Card>
         </Draggable>

@@ -13,7 +13,16 @@ const theme = createTheme({
         },
         typography: {
             fontFamily: 'Bebas Neue, cursive'
-        },       
+        }, 
+        overrides: {
+          MuiTooltip: {
+              tooltip: {
+                  fontSize: "1.2em",
+                  color: 'black',
+                  backgroundColor: '#FEC260'
+              },
+          },
+      },      
 }
 )
 
