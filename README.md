@@ -17,14 +17,20 @@ Simple fitness application that focuses more on aesthetics than on features
 ## Installation
 
 ```bash
+
+# install necessary gems
+bundle install
+
+npm install --prefix client
 npm start --prefix client
+
+
 rails s
 ```
 
 ## Usage
 
 ```rails
-
 
 # create necessary table migrations
 rails db:migrate
