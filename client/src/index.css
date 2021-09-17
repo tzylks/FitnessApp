@@ -7,7 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: white;
-  height: 50%;
+ 
 
 }
 
@@ -53,4 +53,49 @@ code {
     to {
       background-position: 200% center;
     }
+  }
+
+
+  .balloon {
+    display:inline-block;
+     width:120px;
+    height:145px;
+    background: radial-gradient(circle at 65% 15%, white 1px, #78DEC7 3%, royalblue 60%, #78DEC7 100%);
+    border-radius:80%;
+    position:relative;
+    box-shadow:inset -10px -10px 0 rgba(0,0,0,0.09);
+    transition:transform 0.5s ease;
+    z-index:10;
+    animation:balloons 4s ease-in-out infinite;
+    transform-origin:bottom center;
+    margin-right: 90vw;
+    transform: rotate(195deg);
+  }
+  
+  @keyframes balloons {
+    0%,100%{ transform:translateY(0) rotate(-4deg); }
+    50%{ transform:translateY(-250px) rotate(4deg); }
+  }
+  
+  
+  .balloon:before {
+    content:"▲";
+    font-size:20px;
+    color:#78DEC7;
+    display:block;
+    text-align:center;
+    width:100%;
+    position:absolute;
+    bottom:-12px;
+    z-index:-100;
+  }
+  
+  .balloon:after {
+   display:inline-block; top:153px;
+    position:absolute;
+    height:250px;
+    width:1px;
+    margin-left: 4vw;
+    content:"";
+    background:rgba(0,0,0,0.9); 
   }

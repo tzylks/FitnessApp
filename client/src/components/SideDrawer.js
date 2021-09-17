@@ -79,8 +79,8 @@ function SideDrawer({ onLogout, state, toggleDrawer }) {
 
   return (
     <>
-      <div style={{ display: 'flex', height: '20vh' }}>
-        <div  style={{ borderRadius: '20%', position: 'fixed', color: 'yellow', marginLeft: '96vw', marginBototm: '10vh', background: 'rgba(0,0,0,.5)', zIndex: '1', marginTop: '10vh', flexDirection: 'column' }}>
+      <div style={{ display: 'flex' }}>
+        <div  style={{ textAlign: 'center', borderTopLeftRadius: '30%',  borderBottomLeftRadius: '30%', position: 'fixed', color: 'yellow', marginLeft: '96vw', marginBototm: '10vh', background: 'rgba(0,0,0,.5)', zIndex: '1', marginTop: '10vh', flexDirection: 'column' }}>
 
           <PhoneEnabledIcon onClick={() => window.open('tel:7192662837', "_system")} style={{ fontSize: '50px' }} />
           <AttachMoneyIcon onClick={() => {window.location.href = "https://www.venmo.com/u/Trevor-zylks";}} style={{ fontSize: '50px', color: '#78DEC7' }} />

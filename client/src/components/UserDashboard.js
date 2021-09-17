@@ -140,7 +140,7 @@ function UserDashboard({ editThis, setEditThis, sets, reps, goal, setFavorites, 
                         //     className={classes.cover}
                         //     image="https://cdn.wazimo.com/engine/static/articles/fitness-eighties/images/190327_140724_39.jpg"
                         //     title="Fitness Banner"
-                        // />
+                        //
                         <div className={classes.details}>
                             <CardContent className={classes.content}>
                                 <Box>
